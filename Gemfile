@@ -63,3 +63,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # bootstrap インストール
 gem 'bootstrap'
+# エラー処理
+gem 'autoprefixer-rails'
