@@ -31,5 +31,13 @@
                 <td><%= simple_format(h(@cocktail.cocktail_recipe), {}, sanitize: false, wrapper_tag: "div") %></td>
             </tr>
         </tbody>
+        <tbody>
+        <% @ingredients.each do |ingredient| %>
+        <tr>
+            <td><%= ingredient.name %></td>
+            <td><%= ingredient.quantity %></td>
+        </tr>
+        <% end %>
+    </tbody>
     </table>
 </div>
