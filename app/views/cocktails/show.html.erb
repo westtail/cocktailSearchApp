@@ -1,2 +1,35 @@
-<h1>Cocktails#show</h1>
-<p>Find me in app/views/cocktails/show.html.erb</p>
+<h1>カクテル詳細</h1>
+<div class="nav justify-content-end">
+    <a class="nav-link" href="/cocktails">ホームへ戻る</a>
+</div>
+
+<div>
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th><%= Cocktail.human_attribute_name(:name) %></th>
+                <td><%= @cocktail.name %></td>
+            </tr>
+            <tr>
+                <th><%= Cocktail.human_attribute_name(:taste) %></th>
+                <td><%= @cocktail.taste %></td>
+            </tr>
+            <tr>
+                <th><%= Cocktail.human_attribute_name(:base_alcohol) %></th>
+                <td><%= @cocktail.base_alcohol %></td>
+            </tr>
+            <tr>
+                <th><%= Cocktail.human_attribute_name(:glass_type) %></th>
+                <td><%= @cocktail.glass_type %></td>
+            </tr>
+            <tr>
+                <th><%= Cocktail.human_attribute_name(:alcohol_percentage) %></th>
+                <td><%= @cocktail.alcohol_percentage %></td>
+            </tr>
+            <tr>
+                <th><%= Cocktail.human_attribute_name(:cocktail_recipe) %></th>
+                <td><%= simple_format(h(@cocktail.cocktail_recipe), {}, sanitize: false, wrapper_tag: "div") %></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
