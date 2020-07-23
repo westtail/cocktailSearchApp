@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  base_alcohol: MyString
+  taste: MyString
+  alcohol_percentage: MyString
+  glass_type: MyString
+  cocktail_recipete: MyText
+
+two:
+  name: MyString
+  base_alcohol: MyString
+  taste: MyString
+  alcohol_percentage: MyString
+  glass_type: MyString
+  cocktail_recipete: MyText

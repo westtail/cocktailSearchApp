@@ -3,6 +3,7 @@
 FROM ruby:2.5.1
 
 # 必要なパッケージのインストール
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get update -qq && \
     apt-get install -y build-essential \ 
                        libpq-dev \        
