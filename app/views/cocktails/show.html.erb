@@ -30,6 +30,10 @@
                 <th><%= Cocktail.human_attribute_name(:cocktail_recipe) %></th>
                 <td><%= simple_format(h(@cocktail.cocktail_recipe), {}, sanitize: false, wrapper_tag: "div") %></td>
             </tr>
+            <tr>
+                <th>画像</th>
+                <td><%= image_tag '1.JPG', alt: "画像がありません", width: "300px"%></td>
+            </tr>
         </tbody>
         <tbody>
         <% @ingredients.each do |ingredient| %>
