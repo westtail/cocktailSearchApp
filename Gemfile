@@ -65,3 +65,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap'
 # エラー処理
 gem 'autoprefixer-rails'
+
+# 画像投稿機能
+gem 'carrierwave', '>= 1.3.1'
+gem 'rmagick'

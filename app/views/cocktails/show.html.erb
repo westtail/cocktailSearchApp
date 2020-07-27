@@ -31,8 +31,14 @@
                 <td><%= simple_format(h(@cocktail.cocktail_recipe), {}, sanitize: false, wrapper_tag: "div") %></td>
             </tr>
             <tr>
-                <th>画像</th>
-                <td><%= image_tag '1.JPG', alt: "画像がありません", width: "300px"%></td>
+                <td><%= Cocktail.human_attribute_name(:image) %></td>
+                <th>
+                    <% if @cocktail.image? %>
+                        <%= image_tag @cocktail.image.url %>
+                    <% else %>
+                        <%= image_tag "noimage.png" %>
+                    <% end %>
+                </th>
             </tr>
         </tbody>
         <tbody>
