@@ -5,37 +5,50 @@
     <a class="btn btn-primary" href="/cocktails/new">新規登録</a>
 </div>
 
+<div class="cocktail-list">
 <% @cocktails.each do |cocktail| %>
-    <%= link_to cocktail_path(cocktail.id), class:"card my-3" do %>
-        <div class="cocktail-colom">
+    <%= link_to cocktail_path(cocktail.id), class:"cocktail-colom" do %>
+        <div class="cocktail-data">
             <div class="cocktail-name">
-                <div>カクテル名</div>
-                <div><%= cocktail.name %></div>
+                <dt>
+                    <%= Cocktail.human_attribute_name(:name) %>
+                </dt>
+                <dd>
+                    <%= cocktail.name %>
+                </dd>
             </div>
             <div class="cocktail-base-alcohol">
-                <div>ベースのお酒</div>
-                <div><%= cocktail.base_alcohol %></div>
+                <dt>
+                    <%= Cocktail.human_attribute_name(:base_alcohol) %>
+                </dt>
+                <dd>
+                    <%= cocktail.base_alcohol %>
+                </dd>
             </div>
             <div class="cocktail-taste">
-                <div>味</div>
-                <div><%= cocktail.taste %></div>
+                <dt>
+                    <%= Cocktail.human_attribute_name(:taste) %>
+                </dt>
+                <dd>
+                    <%= cocktail.taste %>
+                </dd>
             </div>
             <div class="cocktail-glass-type">
-                <div>グラスタイプ</div>
+                <div><%= Cocktail.human_attribute_name(:glass_type) %></div>
                 <div><%= cocktail.glass_type %></div>
             </div>
             <div class="cocktail-alcohol-percentage">
-                <div>度数</div>
+                <div><%= Cocktail.human_attribute_name(:alcohol_percentage) %></div>
                 <div><%= cocktail.alcohol_percentage %></div>
             </div>
-            <div class="cocktail-image">
-                <% if cocktail.image? %>
-                    <%= image_tag cocktail.image.url %>
-                <% else %>
-                    <%= image_tag "noimage.png" %>
-                <% end %>
-            </div>
+        </div>
+        <div class="cocktail-image">
+            <% if cocktail.image? %>
+                <%= image_tag cocktail.image.url %>
+            <% else %>
+                <%= image_tag "noimage.png" %>
+            <% end %>
         </div>
     <% end %>
 <% end %>
-        
+</div>
