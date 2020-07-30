@@ -1,24 +1,30 @@
 body{
-    background-color: #F4A460;
+    background-color: #BF7E04;
 }
 
-
-h1{color:#37bd}
+h1{
+    color:#37bd
+}
 
 .container{
     padding-top: 20px;
     padding-bottom: 20px;
     margin: 20px auto 0;
-    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 1300px;
+    background-color: #D9B88F;
+}
+
+.cocktail-list{
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
 }
 
 .cocktail-colom{
     display: flex;
     justify-content: space-around;
-
-}
-
-.cocktail-list{
-    display: flex;
-    justify-content: space-around;
+    background-color: #F0F0F2;
 }

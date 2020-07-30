@@ -34,12 +34,20 @@
                 </dd>
             </div>
             <div class="cocktail-glass-type">
-                <div><%= Cocktail.human_attribute_name(:glass_type) %></div>
-                <div><%= cocktail.glass_type %></div>
+                <dt>
+                    <%= Cocktail.human_attribute_name(:glass_type) %>
+                </dt>
+                <dd>
+                    <%= cocktail.glass_type %>
+                </dd>
             </div>
             <div class="cocktail-alcohol-percentage">
-                <div><%= Cocktail.human_attribute_name(:alcohol_percentage) %></div>
-                <div><%= cocktail.alcohol_percentage %></div>
+                <dt>
+                    <%= Cocktail.human_attribute_name(:alcohol_percentage) %>
+                </dt>
+                <dd>
+                    <%= cocktail.alcohol_percentage %>
+                </dd>
             </div>
         </div>
         <div class="cocktail-image">
