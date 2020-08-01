@@ -1,5 +1,4 @@
 <h1>カクテル検索</h1>
-<div class="mb-3"></div>
 
 <div class="nav justify-content-end">
     <a class="btn btn-primary" href="/cocktails/new">新規登録</a>
@@ -52,9 +51,9 @@
         </div>
         <div class="cocktail-image">
             <% if cocktail.image? %>
-                <%= image_tag cocktail.image.url %>
+                <%= image_tag cocktail.image.url , size: '250x405'%>
             <% else %>
-                <%= image_tag "noimage.png" %>
+                <%= image_tag "noimage.png" , size: '250x405'%>
             <% end %>
         </div>
     <% end %>
