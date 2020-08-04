@@ -1,53 +1,57 @@
 <h1>カクテル詳細</h1>
 <div class="nav justify-content-end">
-    <a class="nav-link" href="/cocktails">ホームへ戻る</a>
+    <a class="btn btn-primary" href="/cocktails">ホームへ戻る</a>
 </div>
 
-<div>
-    <table class="table table-hover">
-        <tbody>
-            <tr>
-                <th><%= Cocktail.human_attribute_name(:name) %></th>
-                <td><%= @cocktail.name %></td>
-            </tr>
-            <tr>
-                <th><%= Cocktail.human_attribute_name(:taste) %></th>
-                <td><%= @cocktail.taste %></td>
-            </tr>
-            <tr>
-                <th><%= Cocktail.human_attribute_name(:base_alcohol) %></th>
-                <td><%= @cocktail.base_alcohol %></td>
-            </tr>
-            <tr>
-                <th><%= Cocktail.human_attribute_name(:glass_type) %></th>
-                <td><%= @cocktail.glass_type %></td>
-            </tr>
-            <tr>
-                <th><%= Cocktail.human_attribute_name(:alcohol_percentage) %></th>
-                <td><%= @cocktail.alcohol_percentage %></td>
-            </tr>
-            <tr>
-                <th><%= Cocktail.human_attribute_name(:cocktail_recipe) %></th>
-                <td><%= simple_format(h(@cocktail.cocktail_recipe), {}, sanitize: false, wrapper_tag: "div") %></td>
-            </tr>
-            <tr>
-                <td><%= Cocktail.human_attribute_name(:image) %></td>
-                <th>
-                    <% if @cocktail.image? %>
-                        <%= image_tag @cocktail.image.url %>
-                    <% else %>
-                        <%= image_tag "noimage.png" %>
+<div class="cocktail-detail">
+    <div class="cocktail-detail-data">
+        <div class="cocktail-detail-detaildata">
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th><%= Cocktail.human_attribute_name(:name) %></th>
+                        <td><%= @cocktail.name %></td>
+                    </tr>
+                    <tr>
+                        <th><%= Cocktail.human_attribute_name(:taste) %></th>
+                        <td><%= @cocktail.taste %></td>
+                    </tr>
+                    <tr>
+                        <th><%= Cocktail.human_attribute_name(:base_alcohol) %></th>
+                        <td><%= @cocktail.base_alcohol %></td>
+                    </tr>
+                    <tr>
+                        <th><%= Cocktail.human_attribute_name(:glass_type) %></th>
+                        <td><%= @cocktail.glass_type %></td>
+                    </tr>
+                    <tr>
+                        <th><%= Cocktail.human_attribute_name(:alcohol_percentage) %></th>
+                        <td><%= @cocktail.alcohol_percentage %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="cocktail-detail-recipe">
+            <table class="table table-hover">
+                <tbody>
+                    <th><%= Cocktail.human_attribute_name(:cocktail_recipe) %></th>
+                    <td><%= simple_format(h(@cocktail.cocktail_recipe), {}, sanitize: false, wrapper_tag: "div") %></td>
+                    <% @ingredients.each do |ingredient| %>
+                        <tr>
+                            <td><%= ingredient.name %></td>
+                            <td><%= ingredient.quantity %></td>
+                        </tr>
                     <% end %>
-                </th>
-            </tr>
-        </tbody>
-        <tbody>
-        <% @ingredients.each do |ingredient| %>
-        <tr>
-            <td><%= ingredient.name %></td>
-            <td><%= ingredient.quantity %></td>
-        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="cocktail-detail-image">
+        <% if @cocktail.image? %>
+            <%= image_tag @cocktail.image.url , size: '300x485'%>
+        <% else %>
+            <%= image_tag "noimage.png" , size: '300x485'%>
         <% end %>
-    </tbody>
-    </table>
+    </div>
 </div>
