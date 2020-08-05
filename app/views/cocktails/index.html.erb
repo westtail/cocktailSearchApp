@@ -4,6 +4,21 @@
     <a class="btn btn-primary" href="/cocktails/new">新規登録</a>
 </div>
 
+
+<%= search_form_for @q do |f| %>
+    <div class="form-row">
+        <div class="form-group">
+            <%= f.label :name_cont, "name" ,class: "col-form-label"%>
+            <%= f.search_field :name_cont , class: "form-control"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :base_alcohol_cont, "base_alcohol" ,class: "col-form-label"%>
+            <%= f.select :base_alcohol_cont, [['ウィスキー', 'ウイスキー'], ['ジン', 'ジン'], ['ラム', 'ラム'], ['テキーラ', 'テキーラ'], ['ウォッカ ', 'ウォッカ'], ['その他', 'その他']], { include_blank: ''}, { class: 'form-control'} %>
+        </div>
+        
+    </div>
+    <%= f.submit "検索", class: "form-group" %>
+<% end %>
 <div class="cocktail-list">
 <% @cocktails.each do |cocktail| %>
     <%= link_to cocktail_path(cocktail.id), class:"cocktail-colom" do %>
