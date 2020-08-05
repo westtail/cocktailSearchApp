@@ -15,7 +15,7 @@ class CocktailsController < ApplicationController
   def create
     cocktail = Cocktail.new(cocktail_params)
     cocktail.save!
-    redirect_to cocktails_path
+    redirect_to cocktails_path, notice: "カクテル「#{cocktail.name}」が登録されました"
   end
 
   def edit
@@ -25,13 +25,13 @@ class CocktailsController < ApplicationController
   def update
     cocktail = Cocktail.find(params[:id])
     cocktail.update!(cocktail_params)
-    redirect_to cocktails_path
+    redirect_to cocktails_path, notice: "カクテル「#{cocktail.name}」が更新されました"
   end
 
   def destroy
     cocktail = Cocktail.find(params[:id])
     cocktail.destroy
-    redirect_to cocktails_path
+    redirect_to cocktails_path, notice: "カクテル「#{cocktail.name}」が削除されました"
   end
   private
 
