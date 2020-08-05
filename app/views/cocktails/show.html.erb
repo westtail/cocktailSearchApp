@@ -1,8 +1,14 @@
 <h1>カクテル詳細</h1>
-<div class="nav justify-content-end">
-    <a class="btn btn-primary" href="/cocktails">ホームへ戻る</a>
-</div>
 
+<div class="header">
+    <div>
+        <a class="btn btn-primary" href="/cocktails">ホームへ戻る</a>
+    </div>
+    <div>
+        <%= link_to '編集', edit_cocktail_path(@cocktail),class: "btn btn-secondary"%>
+        <%= link_to '削除', cocktail_path(@cocktail), :method => :delete, data: { confirm: "カクテル「#{@cocktail.name}」を削除しますか？"} ,class: "btn btn-danger" %>
+    </div>
+</div>
 <div class="cocktail-detail">
     <div class="cocktail-detail-data">
         <div class="cocktail-detail-detaildata">

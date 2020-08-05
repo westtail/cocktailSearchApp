@@ -1,0 +1,39 @@
+<h1>カクテル登録</h1>
+
+<div class="nav justify-content-end">
+    <a class="nav-link" href="/cocktails">ホームへ戻る</a>
+</div>
+
+<%= form_with(model: @cocktail,local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="form-group">
+      <%= form.label :taste %>
+      <%= form.text_field :taste %>
+    </div>
+    <div class="form-group">
+      <%= form.label :base_alcohol %>
+      <%= form.text_field :base_alcohol %>
+    </div>
+    <div class="form-group">
+      <%= form.label :glass_type %>
+      <%= form.text_field :glass_type %>
+    </div>
+    <div class="form-group">
+      <%= form.label :alcohol_percentage %>
+      <%= form.text_field :alcohol_percentage %>
+    </div>
+    <div class="form-group">
+      <%= form.label :cocktail_recipe %>
+      <%= form.text_field :cocktail_recipe %>
+    </div>
+    <div class="form-group">
+      <%= form.label :image%>
+      <%= form.file_field :image %>
+    </div>
+    <div class="form-group">
+        <%= form.submit %>
+    </div>
+<% end %>
