@@ -26,6 +26,33 @@ a.btn{
     background-color: #D9B88F;
 }
 
+.form{
+    margin: 0 auto;
+    text-align: center;
+    color: #ffffff;
+    background-color: #4F5902;
+    font-size: 15;
+    
+    .form-group-1 .form-control{
+        margin: 0 auto;
+        width: 70%;
+    }
+    .form-group-2,.form-group-3{
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 70%;
+        div{
+            width: 35%;
+        }
+    }
+    .form-submit{
+        margin: 20px;
+        width: 40%;
+        height: 60%;
+    }
+}
+
 .cocktail-list{
     display: -ms-grid;
     display: grid;
