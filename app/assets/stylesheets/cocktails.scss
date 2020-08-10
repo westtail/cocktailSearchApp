@@ -117,6 +117,16 @@ a.btn{
 }
 
 .register{
-    width: 70%;
     margin: 0 auto;
+    text-align: center;
+    .register-data{
+        width: 60%;
+        margin: 0 auto;
+    }
+    table{
+        table-layout: fixed;
+    }
+    .form-image{
+        margin: 20px;
+    }
 }
