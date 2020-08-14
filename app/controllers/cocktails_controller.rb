@@ -21,7 +21,8 @@ class CocktailsController < ApplicationController
   end
 
   def edit
-    @cocktail = Cocktail.find(params[:id]) 
+    @cocktail = Cocktail.find(params[:id])
+    @ingredients = @cocktail.ingredients.build
   end
 
   def update
@@ -38,6 +39,6 @@ class CocktailsController < ApplicationController
   private
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :taste, :base_alcohol, :glass_type, :alcohol_percentage, :cocktail_recipe, :image, ingredients_attributes: [:name, :quantity])
+    params.require(:cocktail).permit(:name, :taste, :base_alcohol, :glass_type, :alcohol_percentage, :cocktail_recipe, :image, ingredients_attributes: [:id, :name, :quantity, :_destroy])
   end
 end
