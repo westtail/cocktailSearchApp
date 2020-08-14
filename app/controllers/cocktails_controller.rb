@@ -15,9 +15,12 @@ class CocktailsController < ApplicationController
   end
 
   def create
-    cocktail = Cocktail.new(cocktail_params)
-    cocktail.save!
-    redirect_to cocktails_path, notice: "カクテル「#{cocktail.name}」が登録されました"
+    @cocktail = Cocktail.new(cocktail_params)
+    if @cocktail.save
+      redirect_to @cocktail, notice: "カクテル「#{@cocktail.name}」が登録されました"  
+    else
+      render :new
+    end
   end
 
   def edit
