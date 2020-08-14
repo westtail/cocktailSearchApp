@@ -30,6 +30,28 @@
         <%= f.label :cocktail_recipe ,class: "col-form-label" %>
         <%= f.text_field :cocktail_recipe , class: "form-control"%>
       </div>
+    <div>
+      <div class="form-ingredients">
+        <table class="table  alias-table">
+          <thead>
+            <tr>
+              <th>材料名</th>
+              <th>量</th>
+              <th>削除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= f.fields_for :ingredients , wrapper: false do |s| %>
+            <tr class="fields">
+              <td><%= s.text_field :name %></td>
+              <td><%= s.text_field :quantity %></td>
+              <td><%= s.link_to_remove :削除 ,class: "btn"%></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+         <p><%= f.link_to_add :材料を追加, :ingredients , data: { target: ".alias-table" } ,class: "btn"%></p>
+      </div>
       <div class="form-image">
         <%= f.label :image ,class: "col-form-label" %>
         <%= f.file_field :image%>
