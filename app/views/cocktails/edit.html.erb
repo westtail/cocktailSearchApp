@@ -11,7 +11,9 @@
 <% end %>
 
 <div class="nav justify-content-end">
-    <a class="btn btn-primary" href="/cocktails">ホームへ戻る</a>
+    <%= link_to cocktail_path(@cocktail.id), class:"btn btn-primary" do %>
+        カクテルへ戻る
+    <% end %>
 </div>
 
 <div class="register">
