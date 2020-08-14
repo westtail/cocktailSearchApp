@@ -5,7 +5,8 @@
 </div>
 
 <div class="register">
-  <%= form_with(model: @cocktail,local: true) do |f| %>
+  <%= nested_form_for @cocktail  do |f| %>
+    <div class="register-data">
       <div class="form-name">
           <%= f.label :name, "name" ,class: "col-form-label"%>
           <%= f.text_field :name , class: "form-control"%>
@@ -16,7 +17,7 @@
       </div>
       <div class="form-taste">
           <%= f.label :taste, "taste" ,class: "col-form-label"%>
-          <%= f.select :tast, [['辛い','辛い'],['普通','普通'],['甘い','甘い']], { include_blank: ''}, { class: 'form-control'} %>
+          <%= f.select :taste, [['辛い','辛い'],['普通','普通'],['甘い','甘い']], { include_blank: ''}, { class: 'form-control'} %>
       </div>
       <div class="form-glass-type">
           <%= f.label :glass_type, "glass_type" ,class: "col-form-label"%>
@@ -29,6 +30,28 @@
       <div class="form-cocktail-recipe">
         <%= f.label :cocktail_recipe ,class: "col-form-label" %>
         <%= f.text_field :cocktail_recipe , class: "form-control"%>
+      </div>
+    <div>
+      <div class="form-ingredients">
+        <table class="table  alias-table">
+          <thead>
+            <tr>
+              <th>材料名</th>
+              <th>量</th>
+              <th>削除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= f.fields_for :ingredients , wrapper: false do |s| %>
+            <tr class="fields">
+              <td><%= s.text_field :name %></td>
+              <td><%= s.text_field :quantity %></td>
+              <td><%= s.link_to_remove :削除 ,class: "btn"%></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+         <p><%= f.link_to_add :材料を追加, :ingredients , data: { target: ".alias-table" } ,class: "btn"%></p>
       </div>
       <div class="form-image">
         <%= f.label :image ,class: "col-form-label" %>
