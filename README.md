@@ -5,19 +5,19 @@
 カクテルの名前や、味、度数、グラスタイプ、ベースのお酒で検索！  
 検索したカクテルの作り方も確認することができる  
   
-webページ [準備中]
+webページ http://www.cocktailsearch.cf/cocktails
 
 ## (更新内容)
 - [x] ver0アップデート
-- [ ] ver1アップデート
+- [x] ver1アップデート
 - [ ] ver2アップデート 
 
 ## ver1
 * UIの改善
 * 検索機能の実装
-* javascriptを利用したUIの向上
 
 ## ver2
+* javascriptを利用したUIの向上
 * ユーザー機能
 * お気に入り機能
 
