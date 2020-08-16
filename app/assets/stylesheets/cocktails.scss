@@ -3,36 +3,39 @@
     padding: 0;
 }
 
+// 全ての背景色
 body{
-    background-color: #BF7E04;
+    background-color: #455A64;
 }
-
+// タイトル
+h1{
+    color: #ffffff;
+}
+// ボタン
 a.btn{
     background-color: #F0F0F2;
     color: #000000;
 }
-
+// ヘッダー
 .header{
     display: flex;
     justify-content: space-between;
 }
-
+// メイン
 .container{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin: 20px auto;
+    padding: 20px;
+    margin: 30px auto;
     width: 100%;
-    max-width: 1360px;
-    background-color: #D9B88F;
+    max-width: 1370px;
+    background-color: #607D8B;
 }
-
+// 検索フォーム
 .form{
-    margin: 0 auto;
+    margin: 20px;
+    padding: 10px;
     text-align: center;
-    color: #ffffff;
-    background-color: #4F5902;
-    font-size: 15;
-    
+    color: #212121;
+    background-color: #FFFFFF;
     .form-group-1 .form-control{
         margin: 0 auto;
         width: 70%;
@@ -43,7 +46,7 @@ a.btn{
         margin: 0 auto;
         width: 70%;
         div{
-            width: 35%;
+            width: 45%;
         }
     }
     .form-submit{
@@ -52,24 +55,13 @@ a.btn{
         height: 60%;
     }
 }
-
+// カクテルのリスト
 .cocktail-list{
+    margin-top: 20px;
     display: -ms-grid;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
-}
-
-.cocktail-colom{
-    height: 415px;
-    display: flex;
-    justify-content: space-around;
-    background-color: #F0F0F2;
-    color: #000000;
-}
-
-.cocktail-data, .cocktail-image{
-    padding: 5px;
 }
 
 @media screen and (max-width: 890px){
@@ -86,6 +78,21 @@ a.btn{
     }
 }
 
+// カクテルそれぞれ
+.cocktail-colom{
+    height: 425px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #F0F0F2;
+    color: #000000;
+}
+// データと画像の配置
+.cocktail-data, .cocktail-image{
+    padding: 5px;
+    margin: 5px;
+}
+
+// 詳細
 .cocktail-detail{
     background-color: #F0F0F2;
     display: flex;
@@ -97,16 +104,14 @@ a.btn{
 }
 .cocktail-detail-data, .cocktail-detail-image{
         padding: 5px;
-        margin: 0 auto;
+        margin: 5px;
 }
 
 @media screen and (max-width: 700px){
     .cocktail-detail, .cocktail-detail-data{
         flex-direction: column;
     }
-    
 }
-
 @media screen and (min-width: 700px) and (max-width: 1100px){
     .cocktail-detail{
         display: flex;
@@ -116,9 +121,11 @@ a.btn{
         flex-direction: column;
     }
 }
-
+// 新規登録
 .register{
-    margin: 0 auto;
+    background-color: #FFFFFF;
+    margin: 20px;
+    padding: 20px;
     text-align: center;
     .register-data{
         width: 60%;
@@ -141,6 +148,7 @@ a.btn{
 }
 .paginate-text{
     text-align:center;
+    color: #FFFFFF;
 }
 
 .pagination>li>a {          
