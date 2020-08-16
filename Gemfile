@@ -73,6 +73,9 @@ gem 'rmagick'
 # 検索機能gem 
 gem 'ransack'
 
+#ページネーションgem
+gem 'kaminari' 
+
 # 入力フォームの動的追加
 gem "nested_form"
 gem 'jquery-rails'
