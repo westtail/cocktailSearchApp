@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to cocktails_path, notice: "ユーザー「#{@user.name}」が登録されました"
+      redirect_to login_path, notice: "ユーザー「#{@user.name}」が登録されました"
     else
       render :new
     end
