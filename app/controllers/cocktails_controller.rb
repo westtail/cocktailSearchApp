@@ -1,4 +1,7 @@
 class CocktailsController < ApplicationController
+
+  before_action :login_required, only: [:new,:create,:edit,:update,:destory]
+
   def index
     @q = Cocktail.ransack(params[:q])
     @cocktails = @q.result(distinct: true).page(params[:page]).per(18)

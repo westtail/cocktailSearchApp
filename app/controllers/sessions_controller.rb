@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to cocktails_path, notice: 'ログインしました'
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:notice] = 'メールアドレスかパスワードが間違っています'
       render :new
     end
   end
