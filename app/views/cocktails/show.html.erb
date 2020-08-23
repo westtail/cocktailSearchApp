@@ -4,7 +4,7 @@
     <div>
         <a class="btn btn-primary" href="/cocktails">ホームへ戻る</a>
     </div>
-    <% if current_user %>
+    <% if current_user && @cocktail.user_id == current_user.id %>
     <div>
         <%= link_to '編集', edit_cocktail_path(@cocktail),class: "btn btn-secondary"%>
         <%= link_to '削除', cocktail_path(@cocktail), :method => :delete, data: { confirm: "カクテル「#{@cocktail.name}」を削除しますか？"} ,class: "btn btn-danger" %>
