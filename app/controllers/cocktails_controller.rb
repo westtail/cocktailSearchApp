@@ -1,4 +1,7 @@
 class CocktailsController < ApplicationController
+
+  before_action :login_required, only: [:new,:create,:edit,:update,:destory]
+
   def index
     @q = Cocktail.ransack(params[:q])
     @cocktails = @q.result(distinct: true).page(params[:page]).per(18)
@@ -15,7 +18,7 @@ class CocktailsController < ApplicationController
   end
 
   def create
-    @cocktail = Cocktail.new(cocktail_params)
+    @cocktail = current_user.cocktails.new(cocktail_params)
     if @cocktail.save
       redirect_to @cocktail, notice: "カクテル「#{@cocktail.name}」が登録されました"  
     else

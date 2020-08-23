@@ -22,6 +22,12 @@
           ingredients:
             name: 材料名
             quantity: 量
+          user:
+            name: 名前
+            email: メールアドレス
+            password: パスワード
+            password_confirmation: パスワード(確認)
+            create_at: 登録日時
       date:
         abbr_day_names:
         - 日

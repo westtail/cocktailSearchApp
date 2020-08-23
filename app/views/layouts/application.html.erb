@@ -12,6 +12,17 @@
   <body>
     <div class="app-title navbar navbar-expand-md navbar-light bg-light">
       <div class="navber-brand">CocktailSearchApp</div>
+
+      <ul class="navbar-nav ml-auto">
+        <li><%= link_to("検索ページ", cocktails_path, class: "nav-link") %></li>
+        <% if current_user %>
+          <li><%= link_to("ユーザーページ", user_path(current_user.id), class: "nav-link") %></li>
+          <li><%= link_to("ログアウト", logout_path, :method => :delete, class: "nav-link") %></li>
+        <% else %>
+          <li><%= link_to("ユーザー登録", new_user_path, class: "nav-link") %></li>
+          <li><%= link_to("ログイン", login_path, class: "nav-link") %></li>
+        <% end %>
+      </ul>
     </div>
   
     <div class="container">
