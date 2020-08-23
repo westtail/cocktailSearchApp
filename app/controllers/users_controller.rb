@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @cocktails = Cocktail.all
+    @cocktails = current_user.cocktails
   end
 
   def new

@@ -18,7 +18,7 @@ class CocktailsController < ApplicationController
   end
 
   def create
-    @cocktail = Cocktail.new(cocktail_params)
+    @cocktail = current_user.cocktails.new(cocktail_params)
     if @cocktail.save
       redirect_to @cocktail, notice: "カクテル「#{@cocktail.name}」が登録されました"  
     else
