@@ -5,7 +5,7 @@
 カクテルの名前や、味、度数、グラスタイプ、ベースのお酒で検索！  
 検索したカクテルの作り方も確認することができる  
   
-webページ https://www.cocktailsearch.cf/cocktails
+webページ https://www.cocktailsearch.ga
 
 ## (更新内容)
 - [x] ver0アップデート
