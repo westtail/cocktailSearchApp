@@ -15,8 +15,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to @user, notice: "ユーザー「#{@user.name}」が登録されました"
+      UserMailer.account_activation(@user).deliver_now
+      redirect_to cocktails_path, notice: 'メールを送信しました'
+      #session[:user_id] = @user.id
+      #redirect_to @user, notice: "ユーザー「#{@user.name}」が登録されました"
     else
       render :new
     end

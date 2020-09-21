@@ -10,6 +10,13 @@ class User < ApplicationRecord
     before_save   :downcase_email
     before_create :create_activation_digest
 
+    # トークンがダイジェストと一致したらtrueを返す
+    def authenticated?(attribute, token)
+      digest = send("#{attribute}_digest")
+      return false if digest.nil?
+      BCrypt::Password.new(digest).is_password?(token)
+    end
+    
     private
 
     # メールアドレスをすべて小文字にする
@@ -34,4 +41,5 @@ class User < ApplicationRecord
                                                     BCrypt::Engine.cost
       BCrypt::Password.create(string, cost: cost)
     end
+
 end
