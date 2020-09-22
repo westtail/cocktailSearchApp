@@ -1,0 +1,11 @@
+<h1>カクテル検索アプリ</h1>
+
+<p>こんにちは <%= @user.name %>,</p>
+
+<p>
+ユーザー登録してくださりありがとうございます。
+以下のリンクをクリックしてアカウントの有効化を行ってください:
+</p>
+
+<%= link_to "アカウント有効にします", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>

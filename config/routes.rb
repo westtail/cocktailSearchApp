@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   # カクテル
   root to: 'cocktails#index'
   resources :cocktails
+
+  # アカウント有効メーラー
+  resources :account_activations, only: [:edit]
 end

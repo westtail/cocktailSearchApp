@@ -3,6 +3,8 @@ User.find_or_create_by!(email: 'test@a.a') do |user|
     user.email = 'test@a.a'
     user.password = 'test'
     user.password_confirmation = 'test'
+    user. activated =  true
+    user.activated_at = Time.zone.now
 end
 
 Cocktail.first_or_create([

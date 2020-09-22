@@ -40,6 +40,11 @@ services:
     volumes:
       - public-data:/cocktailSearchApp/public
       - tmp-data:/cocktailSearchApp/tmp
+  smtp:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
 volumes:
   public-data:
   tmp-data:
