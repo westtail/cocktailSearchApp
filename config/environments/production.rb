@@ -63,7 +63,13 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "cocktailSearchApp_#{Rails.env}"
 
-  config.action_mailer.perform_caching = false
+  # 開発環境
+  #config.action_mailer.default_url_options = { host: 'localhost'}
+  #config.action_mailer.smtp_settings = { :address => "smtp", :port => 1025 } 
+  #メール機能について
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
