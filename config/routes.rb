@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'cocktailmarks/index'
-  get 'cocktailmarks/create'
-  get 'cocktailmarks/destroy'
   # ユーザーログイン
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -17,5 +14,8 @@ Rails.application.routes.draw do
   # アカウント有効メーラー
   resources :account_activations, only: [:edit]
 
-  resources :cocktailmarks
+  # 記事詳細表示のルーティングにネスト
+  resources :cocktails do
+    resource :cocktailmarks, only: [:create, :destroy]
+  end
 end
