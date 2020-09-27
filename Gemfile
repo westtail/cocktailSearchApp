@@ -79,3 +79,6 @@ gem 'kaminari'
 # 入力フォームの動的追加
 gem "nested_form"
 gem 'jquery-rails'
+
+# アイコンを表示
+gem 'font-awesome-sass', '~> 5.4.1'
