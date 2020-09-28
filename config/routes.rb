@@ -13,4 +13,9 @@ Rails.application.routes.draw do
 
   # アカウント有効メーラー
   resources :account_activations, only: [:edit]
+
+  # 記事詳細表示のルーティングにネスト
+  resources :cocktails do
+    resource :cocktailmarks, only: [:create, :destroy]
+  end
 end

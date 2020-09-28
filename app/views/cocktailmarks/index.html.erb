@@ -1,0 +1,18 @@
+<% @cocktails.each do |cocktail| %>
+    <% if current_user.id == cocktail.id %>
+        <div style='display: inline; float: right;'>
+            <%= link_to icon('fas', 'pen'), edit_cocktail_path(cocktail), id: :"button-edit-#{cocktail.id}" %>
+            <%= link_to icon('fas', 'trash-alt'), cocktail_path(cocktail), id: :"button-delete-#{cocktail.id}",method: :delete, data: { confirm: '削除してよろしいですか？' } %>
+        </div>
+    <% else %>
+        <div style='display: inline; float: right;'>
+            <% if cocktail.cocktailmark_by?(current_user) %> 
+                <%= link_to icon('fas', 'star'), cocktailmark_path(cocktail.id), method: :delete, id: :"js-cocktailmark-button-for-board-#{cocktail.id}" %>
+            <% else %>
+            <%= link_to icon('far', 'star'), cocktailmarks_path(cocktail.id), method: :post, id: :"js-cocktailmark-button-for-board-#{cocktail.id}" %>
+            <% end %>
+        </div>
+    <% end %>
+<% end %>
+
+<%= debug  @cocktailmarks %>

@@ -5,6 +5,8 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true
 
     has_many :cocktails, :dependent => :destroy
+    has_many :cocktailmarks, dependent: :destroy
+    has_many :cocktalmark_cocktails, through: :cocktailmarks, source: :cocktail
 
     attr_accessor :remember_token, :activation_token
     before_save   :downcase_email

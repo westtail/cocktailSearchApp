@@ -4,7 +4,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @cocktails = current_user.cocktails
+    @cocktails = current_user.cocktails.page(params[:page]).per(9)
+
+    @cocktailmarks = current_user.cocktalmark_cocktails.page(params[:page]).per(9)
   end
 
   def new

@@ -11,4 +11,10 @@ class Cocktail < ApplicationRecord
     accepts_nested_attributes_for :ingredients, allow_destroy: true
 
     belongs_to :user
+    has_many :cocktailmarks, dependent: :destroy
+
+    # cocktailのお気に入り判定 → vies側で呼び出し
+    def cocktailmark_by?(user)
+        cocktailmarks.where(user_id: user.id).exists?
+    end
 end
