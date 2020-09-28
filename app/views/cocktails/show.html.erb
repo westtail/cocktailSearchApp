@@ -3,15 +3,18 @@
 <div class="header">
     <div>
         <a class="btn btn-primary" href="/cocktails">ホームへ戻る</a>
+        <% if current_user && @cocktail.user_id == current_user.id %>
+            <%= link_to "ユーザーページへ戻る", user_path(current_user.id), class: "btn btn-primary" %>
+        <% end %>
     </div>
     <% if current_user && @cocktail.user_id == current_user.id %>
     <div>
         <%= link_to icon('fas', 'pen fa-2x'), edit_cocktail_path(@cocktail), data: { confirm: "カクテル「#{@cocktail.name}」を編集しますか？"},class: "btn btn-secondary"%>
         <%= link_to icon('fas', 'trash-alt fa-2x'), cocktail_path(@cocktail), :method => :delete, data: { confirm: "カクテル「#{@cocktail.name}」を削除しますか？"} ,class: "btn btn-danger" %>
         <% if @cocktail.cocktailmark_by?(current_user) %> 
-            <%= link_to icon('fas', 'star fa-2x'), cocktail_cocktailmarks_path(@cocktail.id), method: :delete, class:"btn btn-light" %>
+            <%= link_to icon('fas', 'star fa-2x'), cocktail_cocktailmarks_path(@cocktail.id), method: :delete, remote: true, class:"btn btn-light" %>
         <% else %>
-            <%= link_to icon('far', 'star fa-2x'), cocktail_cocktailmarks_path(@cocktail.id), method: :post, class:"btn btn-light" %>
+            <%= link_to icon('far', 'star fa-2x'), cocktail_cocktailmarks_path(@cocktail.id), method: :post, remote: true, class:"btn btn-light" %>
         <% end %>
     </div>
     <% end %>
