@@ -1,16 +1,14 @@
 <h1>ユーザーページ</h1>
 
-<div class="nav justify-content-end">
-    <a class="btn btn-primary" href="/cocktails/new">新規登録</a>
+<div class="header">
+    <h3 class="title_ucer_cocktail">登録カクテル</h1>
+    <div class="nav justify-content-end">
+        <a class="btn btn-primary" href="/cocktails/new">カクテルを新規登録</a>
+    </div>
 </div>
 
 <div class="cocktail-list">
 <% @cocktails.each do |cocktail| %>
-    <% if cocktail.cocktailmark_by?(current_user) %> 
-        <%= link_to icon('fas', 'star'), cocktail_cocktailmarks_path(cocktail.id), method: :delete, id: :"js-cocktailmark-button-for-board-#{cocktail.id}" %>
-    <% else %>
-        <%= link_to icon('far', 'star'), cocktail_cocktailmarks_path(cocktail.id), method: :post, id: :"js-cocktailmark-button-for-board-#{cocktail.id}" %>
-    <% end %>
     <%= link_to cocktail_path(cocktail.id), class:"cocktail-colom" do %>
         <div class="cocktail-data">
             <div class="cocktail-name">
@@ -57,6 +55,63 @@
         <div class="cocktail-image">
             <% if cocktail.image? %>
                 <%= image_tag cocktail.image.url , size: '250x405'%>
+            <% else %>
+                <%= image_tag "noimage.png" , size: '250x405'%>
+            <% end %>
+        </div>
+    <% end %>
+<% end %>
+</div>
+
+<h1 class="title_like_cocktail">お気に入りカクテル</h1>
+<div class="cocktail-list">
+<% @cocktailmarks.each do |cocktailmark| %>
+    <%= link_to cocktail_path(cocktailmark.id), class:"cocktail-colom" do %>
+        <div class="cocktail-data">
+            <div class="cocktail-name">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:name) %>
+                </dt>
+                <dd>
+                    <%= cocktailmark.name %>
+                </dd>
+            </div>
+            <div class="cocktail-base-alcohol">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:base_alcohol) %>
+                </dt>
+                <dd>
+                    <%= cocktailmark.base_alcohol %>
+                </dd>
+            </div>
+            <div class="cocktail-taste">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:taste) %>
+                </dt>
+                <dd>
+                    <%= cocktailmark.taste %>
+                </dd>
+            </div>
+            <div class="cocktail-glass-type">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:glass_type) %>
+                </dt>
+                <dd>
+                    <%= cocktailmark.glass_type %>
+                </dd>
+            </div>
+            <div class="cocktail-alcohol-percentage">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:alcohol_percentage) %>
+                </dt>
+                <dd>
+                    <%= cocktailmark.alcohol_percentage %>
+                </dd>
+            </div>
+        </div>
+        <div class="cocktail-image">
+            <% if cocktailmark.image? %>
+                <%= image_tag cocktailmark.image.url , size: '250x405'%>
             <% else %>
                 <%= image_tag "noimage.png" , size: '250x405'%>
             <% end %>

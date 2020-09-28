@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @cocktails = current_user.cocktails
 
-    @cocktailmarks = Cocktailmark.where(user_id: current_user.id)
+    @cocktailmarks = current_user.cocktalmark_cocktails
   end
 
   def new

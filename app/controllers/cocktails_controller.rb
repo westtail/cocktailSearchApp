@@ -5,13 +5,13 @@ class CocktailsController < ApplicationController
   def index
     @q = Cocktail.ransack(params[:q])
     @cocktails = @q.result(distinct: true).page(params[:page]).per(18)
-
-    @cocktailmarks = Cocktailmark.where(user_id: current_user.id)
   end
 
   def show
     @cocktail = Cocktail.find(params[:id])
     @ingredients = @cocktail.ingredients
+
+    @cocktailmarks = Cocktailmark.where(user_id: current_user.id)
   end
 
   def new
