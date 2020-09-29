@@ -75,6 +75,13 @@
                     <%= cocktail.alcohol_percentage %>
                 </dd>
             </div>
+            <div>
+                <% if cocktail.cocktailmark_by?(current_user) %> 
+                    <%= icon('fas', 'star fa-2x') %>
+                <% else %>
+                    <%= icon('far', 'star fa-2x') %>
+                <% end %>
+            </div>
         </div>
         <div class="cocktail-image">
             <% if cocktail.image? %>
