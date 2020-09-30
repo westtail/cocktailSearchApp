@@ -1,5 +1,5 @@
 # カクテル検索アプリ 
-# https://github.com/westtail/cocktailApp から新しく作り直しています
+![image](https://user-images.githubusercontent.com/40736515/94714698-74348780-0387-11eb-8248-2e0ae3785320.png)
 ## 概要
 #### カクテルを検索
 カクテルの名前や、味、度数、グラスタイプ、ベースのお酒で検索！  
@@ -29,3 +29,5 @@ webページ https://www.cocktailsearch.ga
 * postgresSQL 
 * AWS 
 * Docker
+
+### https://github.com/westtail/cocktailApp から新しく作り直しています
