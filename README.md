@@ -37,10 +37,13 @@ https://www.cocktailsearch.ga
 * ruby on rails 5.2.4
 * ruby 2.5.1
 * postgresSQL 11.5
+* Nginx
 * AWS 
   * VPC
   * EC2
   * SES
 * Docker/Docker-compose
 
+## インフラ周り
+![環境図](https://user-images.githubusercontent.com/40736515/94824216-bb7e4f00-043f-11eb-8e81-c20b4391097b.png)
 ### https://github.com/westtail/cocktailApp から新しく作り直しています
