@@ -82,3 +82,6 @@ gem 'jquery-rails'
 
 # アイコンを表示
 gem 'font-awesome-sass', '~> 5.4.1'
+
+# bootstrapのテンプレートを追加
+gem 'bootswatch'
