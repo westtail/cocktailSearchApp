@@ -55,9 +55,9 @@
             </div>
             <div class="cocktail-image">
                 <% if cocktail.image? %>
-                    <%= image_tag cocktail.image.url , size: '250x405'%>
+                    <%= image_tag cocktail.image.url , class: 'sized'%>
                 <% else %>
-                    <%= image_tag "noimage.png" , size: '250x405'%>
+                    <%= image_tag "noimage.png" , class: 'sized'%>
                 <% end %>
             </div>
         <% end %>
@@ -123,9 +123,9 @@
             </div>
             <div class="cocktail-image">
                 <% if cocktailmark.image? %>
-                    <%= image_tag cocktailmark.image.url , size: '250x405'%>
+                    <%= image_tag cocktailmark.image.url , class: 'sized'%>
                 <% else %>
-                    <%= image_tag "noimage.png" , size: '250x405'%>
+                    <%= image_tag "noimage.png" , class: 'sized'%>
                 <% end %>
             </div>
         <% end %>
