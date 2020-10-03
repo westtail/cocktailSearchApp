@@ -11,6 +11,11 @@ body{
 h1{
     color: #ffffff;
 }
+@media screen and (max-width: 380px){
+    h1 {
+        text-align: center;
+    }
+}
 // ボタン
 a.btn{
     background-color: #F0F0F2;
@@ -59,6 +64,29 @@ a.btn{
         height: 60%;
     }
 }
+
+@media screen and (max-width: 380px){
+    .form{
+        .form-group-1 .form-control{
+            margin: 0 auto;
+            width: 90%;
+        }
+        .form-group-2,.form-group-3{
+            flex-direction : column;
+            margin: 0 auto;
+            width: 90%;
+            div{
+                width: 100%;
+            }
+        }
+        .form-submit{
+            margin: 20px;
+            width: 70%;
+            height: 60%;
+        }
+    }
+}
+
 // カクテルのリスト
 .cocktail-list{
     display: -ms-grid;
@@ -138,7 +166,6 @@ img.sized {
 // 新規登録
 .register{
     background-color: #FFFFFF;
-    margin: 20px;
     padding: 20px;
     text-align: center;
     .register-data{
@@ -151,6 +178,14 @@ img.sized {
     .form-image{
         margin: 20px;
     }
+    @media screen and (max-width: 380px){
+        .fields{
+            input{
+                width: 170%;
+            }
+        }
+    }
+    
 }
 
 // ページネーション

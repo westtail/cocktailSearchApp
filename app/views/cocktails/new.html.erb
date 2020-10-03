@@ -10,8 +10,8 @@
   </div>
 <% end %>
 
-<div class="nav justify-content-end">
-    <a class="btn btn-primary" href="/cocktails">ホームへ戻る</a>
+<div class="header">
+     <%= link_to "ユーザーページへ戻る", user_path(current_user.id), class: "btn btn-primary" %>
 </div>
 
 <div class="register">
@@ -48,7 +48,6 @@
             <tr>
               <th>材料名</th>
               <th>量</th>
-              <th>削除</th>
             </tr>
           </thead>
           <tbody>
