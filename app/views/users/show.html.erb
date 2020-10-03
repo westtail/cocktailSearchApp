@@ -65,7 +65,7 @@
     </div>
     <div class="my-box mb-3"></div>
         <div class="paginate">
-        <%= paginate @cocktails %>
+        <%= paginate @cocktails , :param_name => 'user_page' %>
     </div>
         <div class="paginate-text">
         <%= page_entries_info @cocktails%>
@@ -133,7 +133,7 @@
     </div>
     <div class="my-box mb-3"></div>
         <div class="paginate">
-        <%= paginate @cocktailmarks %>
+        <%= paginate @cocktailmarks , :param_name => 'like_page'%>
     </div>
     <div class="paginate-text">
         <%= page_entries_info @cocktailmarks%>
