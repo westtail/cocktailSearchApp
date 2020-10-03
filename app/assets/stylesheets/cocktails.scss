@@ -178,11 +178,19 @@ img.sized {
     .form-image{
         margin: 20px;
     }
+    .form-cocktail-recipe{
+        textarea{
+            height: 100px;
+        }
+    }
     @media screen and (max-width: 380px){
         .fields{
             input{
                 width: 170%;
             }
+        }
+        .register-data{
+            width:  100%;
         }
     }
     
