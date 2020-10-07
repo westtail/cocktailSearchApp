@@ -11,6 +11,11 @@ body{
 h1{
     color: #ffffff;
 }
+@media screen and (max-width: 380px){
+    h1 {
+        text-align: center;
+    }
+}
 // ボタン
 a.btn{
     background-color: #F0F0F2;
@@ -59,6 +64,29 @@ a.btn{
         height: 60%;
     }
 }
+
+@media screen and (max-width: 380px){
+    .form{
+        .form-group-1 .form-control{
+            margin: 0 auto;
+            width: 90%;
+        }
+        .form-group-2,.form-group-3{
+            flex-direction : column;
+            margin: 0 auto;
+            width: 90%;
+            div{
+                width: 100%;
+            }
+        }
+        .form-submit{
+            margin: 20px;
+            width: 70%;
+            height: 60%;
+        }
+    }
+}
+
 // カクテルのリスト
 .cocktail-list{
     display: -ms-grid;
@@ -94,6 +122,17 @@ a.btn{
     padding: 5px;
     margin: 5px;
 }
+@media screen and (max-width: 380px){
+    .cocktail-data, .cocktail-image{
+        padding: 2px;
+        margin: 2px;
+        width: 50%;
+    }
+}
+img.sized {
+    width: 100%;
+    height: 100%;
+}
 
 // 詳細
 .cocktail-detail{
@@ -127,7 +166,6 @@ a.btn{
 // 新規登録
 .register{
     background-color: #FFFFFF;
-    margin: 20px;
     padding: 20px;
     text-align: center;
     .register-data{
@@ -140,6 +178,22 @@ a.btn{
     .form-image{
         margin: 20px;
     }
+    .form-cocktail-recipe{
+        textarea{
+            height: 100px;
+        }
+    }
+    @media screen and (max-width: 380px){
+        .fields{
+            input{
+                width: 170%;
+            }
+        }
+        .register-data{
+            width:  100%;
+        }
+    }
+    
 }
 
 // ページネーション
