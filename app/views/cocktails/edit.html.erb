@@ -1,4 +1,4 @@
-<h1>カクテル登録</h1>
+<h1>カクテル編集</h1>
 
 <% if @cocktail.errors.present? %>
   <div class="alert alert-warning">
@@ -10,10 +10,8 @@
   </div>
 <% end %>
 
-<div class="nav justify-content-end">
-    <%= link_to cocktail_path(@cocktail.id), class:"btn btn-primary" do %>
-        カクテルへ戻る
-    <% end %>
+<div class="header">
+    <%= link_to "カクテルへ戻る", cocktail_path(@cocktail.id), class:"btn btn-primary" %>
 </div>
 
 <div class="register">
@@ -41,7 +39,7 @@
       </div>
       <div class="form-cocktail-recipe">
         <%= f.label :cocktail_recipe ,class: "col-form-label" %>
-        <%= f.text_field :cocktail_recipe , class: "form-control"%>
+        <%= f.text_area :cocktail_recipe , class: "form-control"%>
       </div>
     <div>
       <div class="form-ingredients">
@@ -50,7 +48,6 @@
             <tr>
               <th>材料名</th>
               <th>量</th>
-              <th>削除</th>
             </tr>
           </thead>
           <tbody>

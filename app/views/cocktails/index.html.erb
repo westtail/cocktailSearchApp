@@ -28,6 +28,7 @@
             </div> 
         </div>
         <%= f.submit "検索", class: "btn btn-light form-submit" %>
+        <%= link_to '検索条件のクリア', request.path ,class: "btn btn-light form-submit"%>
     <% end %>
 </div>
 
@@ -75,12 +76,20 @@
                     <%= cocktail.alcohol_percentage %>
                 </dd>
             </div>
+            <% if current_user %>
+                <% if cocktail.cocktailmark_by?(current_user) %> 
+                    <%= icon('fas', 'star fa-2x') %>
+                <% else %>
+                    <%= icon('far', 'star fa-2x') %>
+                <% end %>
+            <% else %>
+            <% end %>
         </div>
         <div class="cocktail-image">
             <% if cocktail.image? %>
-                <%= image_tag cocktail.image.url , size: '250x405'%>
+                <%= image_tag cocktail.image.url , class: 'sized'%>
             <% else %>
-                <%= image_tag "noimage.png" , size: '250x405'%>
+                <%= image_tag "noimage.png" , class: 'sized'%>
             <% end %>
         </div>
     <% end %>
