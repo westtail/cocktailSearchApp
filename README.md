@@ -20,7 +20,7 @@ https://www.cocktailsearch.cf
 
 ### (更新内容)
 - [x] ver2アップデート
-- [] ver3アップデート
+- [ ] ver3アップデート
 
 ### ver1~ver2
 * スマホサイズに改善
