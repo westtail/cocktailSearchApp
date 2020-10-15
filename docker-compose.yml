@@ -31,11 +31,11 @@ services:
     ports:
       - "3000:3000"
     links:
-      - db 
+      - db
 
   nginx:
     # docker-compose buildのときにビルドするためのDockerfileのパス
-    build: 
+    build:
       context: ./nginx
     ports:
       - 80:80
