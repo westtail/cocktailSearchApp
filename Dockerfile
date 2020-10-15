@@ -1,13 +1,13 @@
-# dockerfile 
+# dockerfile
 # 開発rubyバージョン指定
 FROM ruby:2.5.1
 
 # 必要なパッケージのインストール
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get update -qq && \
-    apt-get install -y build-essential \ 
-                       libpq-dev \        
-                       nodejs           
+    apt-get install -y build-essential \
+                       libpq-dev \
+                       nodejs
 
 # 作業ディレクトリの作成、設定
 RUN mkdir /cocktailSearchApp
@@ -21,11 +21,11 @@ ADD ./Gemfile $APP_ROOT/Gemfile
 ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
 # Gemfileのbundle install
-RUN bundle install 
+RUN bundle install
 ADD . $APP_ROOT
 
 # puma.sockを配置するディレクトリを作成
 RUN mkdir -p tmp/sockets
 
 RUN mkdir -p /tmp/public && \
-    cp -rf /cocktailSearchApp/public/* /tmp/public 
+    cp -rf /cocktailSearchApp/public/* /tmp/public
