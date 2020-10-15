@@ -9,6 +9,8 @@ services:
     environment:
         POSTGRES_USER: 'admin'
         POSTGRES_PASSWORD: 'admin-pass'
+    volumes:
+      - pgdatavol:/var/lib/postgresql/data
     ports:
       - "3306:3306"
 
@@ -53,3 +55,4 @@ volumes:
   public-data:
   tmp-data:
   log-data:
+  pgdatavol:
