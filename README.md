@@ -7,7 +7,7 @@
 
 ## アプリのURL 
 https://www.cocktailsearch.ga
-
+https://www.cocktailsearch.cf
 現在EC2サーバーが落ちてしまう問題が発生しており、原因を解明中です  
 アクセスして確認できなかった場合、後日アクセスしていただくと確認できると思います
 ## 機能
@@ -16,21 +16,21 @@ https://www.cocktailsearch.ga
 * ページネーション機能(kaminari)
 * カクテル投稿機能
   * 画像投稿機能(carrierwave)
+* カクテルお気に入り機能
 
 ### (更新内容)
-- [x] ver0アップデート
-- [x] ver1アップデート
-- [ ] ver2アップデート 
+- [x] ver2アップデート
+- [] ver3アップデート
 
-### ver1
-* UIの改善
+### ver1~ver2
+* スマホサイズに改善
 * 検索機能の実装
 * カクテルの登録機能
-
-### ver2
 * javascriptを利用したUIの向上
 * ユーザー機能
 * お気に入り機能
+
+### ver3
 
 ## 使用技術
 
