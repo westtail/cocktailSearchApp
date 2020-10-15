@@ -6,8 +6,8 @@
 またユーザー登録すれば、カクテルを登録できたりします
 
 ## アプリのURL 
-https://www.cocktailsearch.ga
-https://www.cocktailsearch.cf
+https://www.cocktailsearch.ga  
+https://www.cocktailsearch.cf  
 現在EC2サーバーが落ちてしまう問題が発生しており、原因を解明中です  
 アクセスして確認できなかった場合、後日アクセスしていただくと確認できると思います
 ## 機能
