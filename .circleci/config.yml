@@ -14,13 +14,19 @@ jobs:
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
           name: docker-compose up
-          command: docker-compose up --build -d
+          command: |
+            set -x
+            docker-compose up --build -d
       - run:
           name: docker-compose stop
-          command: docker-compose stop
+          command: |
+            set -x
+            docker-compose stop
       - run:
           name: docker-compose up
-          command: docker-compose up -d
+          command: |
+            set -x
+            docker-compose up -d
       - run:
           name: test
           command: |
@@ -33,4 +39,3 @@ jobs:
       - run:
           name: docker-compose down
           command: docker-compose down
-
