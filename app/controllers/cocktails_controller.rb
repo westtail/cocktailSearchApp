@@ -10,8 +10,9 @@ class CocktailsController < ApplicationController
   def show
     @cocktail = Cocktail.find(params[:id])
     @ingredients = @cocktail.ingredients
-
-    @cocktailmarks = Cocktailmark.where(user_id: current_user.id)
+    if current_user
+      @cocktailmarks = Cocktailmark.where(user_id: current_user.id)
+    end
   end
 
   def new

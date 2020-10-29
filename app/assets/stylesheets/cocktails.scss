@@ -116,7 +116,14 @@ a.btn{
     justify-content: space-around;
     background-color: #F0F0F2;
     color: #000000;
+    text-decoration: none;
 }
+
+//ホバー時に下線が出ないようにする
+a:hover{
+    text-decoration: none;
+}
+
 // データと画像の配置
 .cocktail-data, .cocktail-image{
     padding: 5px;

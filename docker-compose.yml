@@ -3,12 +3,14 @@ version: '3'
 
 services:
   db:
-    # コンテナ作成に必要なイメージを指定 
+    # コンテナ作成に必要なイメージを指定
     image: postgres:11.5
     # 環境変数
     environment:
         POSTGRES_USER: 'admin'
         POSTGRES_PASSWORD: 'admin-pass'
+    volumes:
+      - pgdatavol:/var/lib/postgresql/data
     ports:
       - "3306:3306"
 
@@ -20,18 +22,18 @@ services:
     # webサーバー用のスクリプトを実行
     command: sh scripts/launch.sh
     volumes:
-      - .:/cocktailSearchApp
+      - .:/cocktailSearchApp:cached
       - public-data:/cocktailSearchApp/public
       - tmp-data:/cocktailSearchApp/tmp
       - log-data:/cocktailSearchApp/log
     ports:
       - "3000:3000"
     links:
-      - db 
+      - db
 
   nginx:
     # docker-compose buildのときにビルドするためのDockerfileのパス
-    build: 
+    build:
       context: ./nginx
     ports:
       - 80:80
@@ -49,3 +51,4 @@ volumes:
   public-data:
   tmp-data:
   log-data:
+  pgdatavol:
