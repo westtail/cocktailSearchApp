@@ -7,5 +7,6 @@ FactoryBot.define do
         glass_type {'テストグラス'}
         cocktail_recipe {'テスト'}
         user_id {1}
+        user
     end
 end
