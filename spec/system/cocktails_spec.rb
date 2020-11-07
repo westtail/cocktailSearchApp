@@ -6,8 +6,8 @@ RSpec.describe "機能統合テスト", type: :system do
     @user_a = FactoryBot.create(:user, name:'テストユーザー1',email: '1test@test.test',password: 'password1',activated: true)
     @user_b = FactoryBot.create(:user, name:'テストユーザー2',email: '2test@test.test',password: 'password2',activated: true)
     @user_c = FactoryBot.create(:user, name:'テストユーザー3',email: '3test@test.test',password: 'password3',activated: false)
-    @cocktails_a = FactoryBot.create(:cocktail, name:'テストカクテル1', base_alcohol: 'ジン', taste: '辛い', alcohol_percentage: '40', glass_type: 'ロング',cocktail_recipe: 'テスト', user: @user_a)
-    @cocktails_b = FactoryBot.create(:cocktail, name:'テストカクテル2', base_alcohol: 'ジン', taste: '辛い', alcohol_percentage: '40', glass_type: 'ロング',cocktail_recipe: 'テスト', user: @user_b)
+    @cocktails_a = FactoryBot.create(:cocktail, name:'テストカクテル1', base_alcohol: 'ジン', taste: '辛い', alcohol_percentage: '強い(30~40%)', glass_type: 'ロング',cocktail_recipe: 'テスト', user: @user_a)
+    @cocktails_b = FactoryBot.create(:cocktail, name:'テストカクテル2', base_alcohol: 'ジン', taste: '辛い', alcohol_percentage: '強い(30~40%)', glass_type: 'ロング',cocktail_recipe: 'テスト', user: @user_b)
   end
   describe "ログイン機能" do
     before do
@@ -33,26 +33,82 @@ RSpec.describe "機能統合テスト", type: :system do
     end
   end
 
-  describe "ログインなし遷移機能" do
+  describe "ログインなしテスト" do
     before do
       visit root_path
     end
-    it "ホーム画面に移動したか" do
-      # have_selecter でタグを指名
+    describe "遷移機能" do
+      it "ホーム画面に移動したか" do
+        # have_selecter でタグを指名
+        expect(page).to have_selector 'h1', text: 'カクテル検索'
+      end
+      it "ホーム画面にテストカクテルがあるか" do
+        expect(page).to have_content 'テストカクテル1'
+      end
+      it "カクテル詳細を確認できるか" do
+        visit cocktail_path(@cocktails_a.id)
+        expect(page).to have_selector 'h1', text: 'カクテル詳細'
+      end
+      it "詳細から一覧に戻れるか" do
+        visit cocktail_path(@cocktails_a.id)
+        expect(page).to have_selector 'h1', text: 'カクテル詳細'
+        click_on "ホームへ戻る"
+        expect(page).to have_selector 'h1', text: 'カクテル検索'
+      end
+    end
+    describe "ヘッダー機能" do
+      it "検索ページに移動できるか" do
+        visit cocktail_path(@cocktails_a.id)
+        expect(page).to have_selector 'h1', text: 'カクテル詳細'
+        click_on "検索ページ"
+        expect(page).to have_selector 'h1', text: 'カクテル検索'
+      end
+      it "ユーザー登録に移動できるか" do
+        click_on "ユーザー登録"
+        expect(page).to have_selector 'h1', text: 'ユーザー登録'
+      end
+      it "ログインに移動できるか" do
+        click_on "ログイン"
+        expect(page).to have_selector 'h1', text: 'ログイン'
+      end
+    end
+  end
+  describe "検索機能" do
+    before do
+      visit root_path
+    end
+    it "カクテル名で検索でカクテルが出てくるか" do
+      fill_in 'カクテル名', with: 'テストカクテル'
+      click_button '検索'
       expect(page).to have_selector 'h1', text: 'カクテル検索'
+      expect(page).to have_selector 'dd', text: 'テストカクテル1'
     end
-    it "ホーム画面にテストカクテルがあるか" do
-      expect(page).to have_content 'テストカクテル1'
-    end
-    it "カクテル詳細を確認できるか" do
-      visit cocktail_path(@cocktails_a.id)
-      expect(page).to have_selector 'h1', text: 'カクテル詳細'
-    end
-    it "詳細から一覧に戻れるか" do
-      visit cocktail_path(@cocktails_a.id)
-      expect(page).to have_selector 'h1', text: 'カクテル詳細'
-      click_on "ホームへ戻る"
+    it "ベースのお酒で検索でカクテルが出てくるか" do
+      select 'ジン', from: 'q[base_alcohol_cont]'
+      click_button '検索'
       expect(page).to have_selector 'h1', text: 'カクテル検索'
+      expect(page).to have_selector 'dd', text: 'テストカクテル1'
     end
+    it "味で検索でカクテルが出てくるか" do
+      select '辛い', from: 'q[taste_cont]'
+      click_button '検索'
+      expect(page).to have_selector 'h1', text: 'カクテル検索'
+      expect(page).to have_selector 'dd', text: '辛い'
+    end
+    it "グラスタイプで検索でカクテルが出てくるか" do
+      select 'ロング', from: 'q[glass_type_cont]'
+      click_button '検索'
+      expect(page).to have_selector 'h1', text: 'カクテル検索'
+      expect(page).to have_selector 'dd', text: 'ロング'
+    end
+    it "度数で検索でカクテルが出てくるか" do
+      select '強い(30~40%)', from: 'q[alcohol_percentage_cont]'
+      click_button '検索'
+      expect(page).to have_selector 'h1', text: 'カクテル検索'
+      expect(page).to have_selector 'dd', text: '強い(30~40%)'
+    end
+  end
+  describe "ユーザー登録　ログイン機能" do
+
   end
 end
