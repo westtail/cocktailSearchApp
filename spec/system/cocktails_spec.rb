@@ -1,7 +1,9 @@
 require 'rails_helper'
+#require 'pp'
 
 RSpec.describe "機能統合テスト", type: :system do
   before do
+    ActionMailer::Base.deliveries.clear
     # テストユーザーを作成
     @user_a = FactoryBot.create(:user, name:'テストユーザー1',email: '1test@test.test',password: 'password1',activated: true)
     @user_b = FactoryBot.create(:user, name:'テストユーザー2',email: '2test@test.test',password: 'password2',activated: true)
@@ -109,6 +111,26 @@ RSpec.describe "機能統合テスト", type: :system do
     end
   end
   describe "ユーザー登録　ログイン機能" do
-
+    describe "ユーザー登録" do
+      before do
+        visit new_user_path
+        fill_in '名前', with: 'user'
+        fill_in 'メールアドレス', with: 'user_test@test.test'
+        fill_in 'パスワード', with: 'password'
+        fill_in 'パスワード(確認)', with: 'password'
+        click_button 'Create my account'
+      end
+      it "メールが送信されたか" do
+        expect(ActionMailer::Base.deliveries.size).to eq 1
+      end
+    end
+    #describe "アカウント有効" do
+    # it "テスト" do
+    #    post users_path, params: {  name: 'userw', email: 'ww@ww.ww', password:'pass' ,password_confirmation:'pass'  }
+    #    user = controller.instance_variable_get('@user')
+    #    pp user
+    #    visit edit_account_activation_path(@user.activation_token,email: @user.email)
+    #  end
+    #end
   end
 end
