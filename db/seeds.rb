@@ -3,7 +3,7 @@ User.find_or_create_by!(email: 'test@a.a') do |user|
     user.email = 'test@a.a'
     user.password = 'test'
     user.password_confirmation = 'test'
-    user. activated =  true
+    user.activated =  true
     user.activated_at = Time.zone.now
 end
 
@@ -12,7 +12,7 @@ User.find_or_create_by!(email: 'test2@a.a') do |user|
     user.email = 'test2@a.a'
     user.password = 'test2'
     user.password_confirmation = 'test2'
-    user. activated =  true
+    user.activated =  true
     user.activated_at = Time.zone.now
 end
 
