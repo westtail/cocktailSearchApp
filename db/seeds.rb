@@ -16,6 +16,15 @@ User.find_or_create_by!(email: 'test2@a.a') do |user|
     user.activated_at = Time.zone.now
 end
 
+User.find_or_create_by!(email: 'guest@example.com') do |user|
+    user.name ='ゲストユーザー'
+    user.email = 'guest@example.com'
+    user.password = 'test_password'
+    user.password_confirmation = 'test_password'
+    user.activated =  true
+    user.activated_at = Time.zone.now
+end
+
 Cocktail.first_or_create([
     {name: "ジントニック", base_alcohol: "ジン", taste: "普通", alcohol_percentage: "普通(10~20%)", glass_type:"ロング",cocktail_recipe: "コップに氷とジンを入れてステア。\nトニックウォーターをを混ぜて完成",image: open("#{Rails.root}/app/assets/images/ジントニック.JPG"), user_id: 1},
     {name: "モヒート", base_alcohol: "ラム", taste: "普通", alcohol_percentage: "普通(10~20%)", glass_type:"ロング",cocktail_recipe: "コップにライムとラムと砂糖を入れてライムをつぶす。\n次にミントを入れて軽く混ぜる。\n氷、炭酸水を混ぜて完成",image: open("#{Rails.root}/app/assets/images/モヒート.JPG"), user_id: 1},
