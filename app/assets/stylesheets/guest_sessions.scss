@@ -1,3 +1,11 @@
-// Place all the styles related to the guest_sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.guest-login{
+    display: flex;
+    padding: 20px;
+    .guest-login-text{
+        margin-left: 20px;
+        background-color: #F0F0F2;
+        margin-bottom: 0rem;
+        text-align: center;
+        padding: 5px 0;
+    }
+}
