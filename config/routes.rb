@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  # ゲストユーザーログイン
+  post '/guest', to: 'guest_sessions#create'
+
   # ユーザー
   resources :users
 

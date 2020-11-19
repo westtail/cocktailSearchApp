@@ -4,6 +4,8 @@ require 'rails_helper'
 RSpec.describe "機能統合テスト", type: :system do
   before do
     ActionMailer::Base.deliveries.clear
+    # ゲストユーザー作成
+    @user_guest = FactoryBot.create(:user, name:'ゲストユーザー',email: 'guest@example.com',password: 'test_password',activated: true)
     # テストユーザーを作成
     @user_a = FactoryBot.create(:user, name:'テストユーザー1',email: '1test@test.test',password: 'password1',activated: true)
     @user_b = FactoryBot.create(:user, name:'テストユーザー2',email: '2test@test.test',password: 'password2',activated: true)
@@ -32,6 +34,20 @@ RSpec.describe "機能統合テスト", type: :system do
     it "ログインが成功しユーザーページに移動して他のカクテルがないか" do
       visit user_path(@user_a.id)
       expect(page).to have_no_content 'テストカクテル２'
+    end
+  end
+
+  describe "ゲストログイン機能" do
+    before do
+      visit login_path
+      click_link 'ゲストユーザーログイン'
+    end
+    it "ログイン成功　カクテル検索ページに移動するか" do
+      expect(page).to have_selector 'h1', text: 'カクテル検索'
+    end
+    it "ログイン成功　ユーザーページに移動できるか" do
+      visit user_path(@user_guest.id)
+      expect(page).to have_selector 'h1', text: 'ユーザーページ'
     end
   end
 
