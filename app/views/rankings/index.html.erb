@@ -1,9 +1,26 @@
 <h1>ランキング</h1>
+<div class="form">
+    <%= search_form_for @q, url: rankings_path do |f| %>
+        <div class="form-group-2">
+            <div class="form-base-alcohol">
+                <%= f.label :base_alcohol_cont, "ベースのお酒" ,class: "col-form-label"%>
+                <%= f.select :base_alcohol_cont, [['ウィスキー', 'ウイスキー'], ['ジン', 'ジン'], ['ラム', 'ラム'], ['テキーラ', 'テキーラ'], ['ウォッカ ', 'ウォッカ'], ['その他', 'その他']], { include_blank: ''}, { class: 'form-control'} %>
+            </div>
+            <div class="form-taste">
+                <%= f.label :taste_cont, "味" ,class: "col-form-label"%>
+                <%= f.select :taste_cont, [['辛い','辛い'],['普通','普通'],['甘い','甘い']], { include_blank: ''}, { class: 'form-control'} %>
+            </div>
+        </div>
+        <%= f.submit "検索", class: "btn btn-light form-submit" %>
+        <input value="検索条件のクリア" id="clear-form" class="btn btn-light form-submit">
+    <% end %>
+</div>
+
 <div class="cocktail-list">
-<% @rank_cocktails.each.with_index(1) do |cocktail, i| %>
+<% @search_rank_list.each.with_index(1) do |cocktail, i| %>
     <div>
     <p class="rank-number"><%=i%>位</p>
-    <p class="rank-number">お気に入り数 <%= @rank_list[i-1]%></p>
+    <p class="rank-number">お気に入り数 <%= @search_rank_number[i-1]%></p>
     <%= link_to cocktail_path(cocktail.id), class:"cocktail-colom" do %>
         <div class="cocktail-data">
             <div class="cocktail-name">
