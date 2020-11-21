@@ -1,0 +1,68 @@
+<h1>ランキング</h1>
+<div class="cocktail-list">
+<% @rank_cocktails.each.with_index(1) do |cocktail, i| %>
+    <div>
+    <p class="rank-number"><%=i%>位</p>
+    <p class="rank-number">お気に入り数 <%= @rank_list[i-1]%></p>
+    <%= link_to cocktail_path(cocktail.id), class:"cocktail-colom" do %>
+        <div class="cocktail-data">
+            <div class="cocktail-name">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:name) %>
+                </dt>
+                <dd>
+                    <%= cocktail.name %>
+                </dd>
+            </div>
+            <div class="cocktail-base-alcohol">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:base_alcohol) %>
+                </dt>
+                <dd>
+                    <%= cocktail.base_alcohol %>
+                </dd>
+            </div>
+            <div class="cocktail-taste">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:taste) %>
+                </dt>
+                <dd>
+                    <%= cocktail.taste %>
+                </dd>
+            </div>
+            <div class="cocktail-glass-type">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:glass_type) %>
+                </dt>
+                <dd>
+                    <%= cocktail.glass_type %>
+                </dd>
+            </div>
+            <div class="cocktail-alcohol-percentage">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:alcohol_percentage) %>
+                </dt>
+                <dd>
+                    <%= cocktail.alcohol_percentage %>
+                </dd>
+            </div>
+            <% if current_user %>
+                <% if cocktail.cocktailmark_by?(current_user) %> 
+                    <%= icon('fas', 'star fa-2x') %>
+                <% else %>
+                    <%= icon('far', 'star fa-2x') %>
+                <% end %>
+            <% else %>
+            <% end %>
+        </div>
+        <div class="cocktail-image">
+            <% if cocktail.image? %>
+                <%= image_tag cocktail.image.url , class: 'sized'%>
+            <% else %>
+                <%= image_tag "noimage.png" , class: 'sized'%>
+            <% end %>
+        </div>
+    <% end %>
+    </div>
+<% end %>
+</div>
