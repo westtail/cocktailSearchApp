@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # ランキング
+  get '/rankings', to: 'rankings#index'
+
   # ユーザーログイン
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
