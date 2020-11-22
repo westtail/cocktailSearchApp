@@ -80,23 +80,23 @@ RSpec.describe "機能統合テスト", type: :system do
       before do
         visit root_path
       end
+      it "ホームに移動できるか" do
+        click_on "ホーム"
+        expect(page).to have_selector 'h1', text: 'ホーム'
+      end
       it "検索ページに移動できるか" do
         visit cocktail_path(@cocktails_a.id)
         expect(page).to have_selector 'h1', text: 'カクテル詳細'
         click_on "検索ページ"
         expect(page).to have_selector 'h1', text: 'カクテル検索'
       end
-      it "ホームに移動できるか" do
-        click_on "ホーム"
-        expect(page).to have_selector 'h1', text: 'ホーム'
+      it "ランキングに移動できるか" do
+        click_on "ランキング"
+        expect(page).to have_selector 'h1', text: 'ランキング'
       end
       it "ユーザー登録に移動できるか" do
         click_on "ユーザー登録"
         expect(page).to have_selector 'h1', text: 'ユーザー登録'
-      end
-      it "ランキングに移動できるか" do
-        click_on "ランキング"
-        expect(page).to have_selector 'h1', text: 'ランキング'
       end
       it "ログインに移動できるか" do
         click_on "ログイン"
@@ -104,6 +104,71 @@ RSpec.describe "機能統合テスト", type: :system do
       end
     end
   end
+
+  describe "ログインありテスト" do
+    before do
+      visit login_path
+      fill_in 'Email', with: '1test@test.test'
+      fill_in 'Password', with: 'password1'
+      click_button 'login'
+    end
+    describe "遷移機能" do
+      it "ホーム画面に移動したか" do
+        visit root_path
+        expect(page).to have_selector 'h1', text: 'ホーム'
+      end
+      it "検索画面に移動したか" do
+        visit cocktails_path
+        expect(page).to have_selector 'h1', text: 'カクテル検索'
+      end
+      it "検索画面にテストカクテルがあるか" do
+        visit cocktails_path
+        expect(page).to have_content 'テストカクテル1'
+      end
+      it "カクテル詳細を確認できるか" do
+        visit cocktail_path(@cocktails_a.id)
+        expect(page).to have_selector 'h1', text: 'カクテル詳細'
+      end
+      it "詳細から一覧に戻れるか" do
+        visit cocktail_path(@cocktails_a.id)
+        expect(page).to have_selector 'h1', text: 'カクテル詳細'
+        click_on "ホームへ戻る"
+        expect(page).to have_selector 'h1', text: 'カクテル検索'
+      end
+    end
+    describe "ヘッダー機能" do
+      before do
+        visit root_path
+      end
+      it "ホームに移動できるか" do
+        click_on "ホーム"
+        expect(page).to have_selector 'h1', text: 'ホーム'
+      end
+      it "検索ページに移動できるか" do
+        visit cocktail_path(@cocktails_a.id)
+        expect(page).to have_selector 'h1', text: 'カクテル詳細'
+        click_on "検索ページ"
+        expect(page).to have_selector 'h1', text: 'カクテル検索'
+      end
+      it "ランキングに移動できるか" do
+        click_on "ランキング"
+        expect(page).to have_selector 'h1', text: 'ランキング'
+      end
+      it "カクテル登録に移動できるか" do
+        click_on "カクテル登録"
+        expect(page).to have_selector 'h1', text: 'カクテル登録'
+      end
+      it "ユーザーページに移動できるか" do
+        click_on "ユーザーページ"
+        expect(page).to have_selector 'h1', text: 'ユーザーページ'
+      end
+      it "ログアウトに移動できるか" do
+        click_on "ログアウト"
+        expect(page).to have_selector 'h1', text: 'ホーム'
+      end
+    end
+  end
+
   describe "検索機能" do
     before do
       visit cocktails_path
@@ -139,6 +204,7 @@ RSpec.describe "機能統合テスト", type: :system do
       expect(page).to have_selector 'dd', text: '強い(30~40%)'
     end
   end
+
   describe "ユーザー登録　ログイン機能" do
     describe "ユーザー登録" do
       before do
