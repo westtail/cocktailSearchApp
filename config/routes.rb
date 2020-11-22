@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  # ホーム
+  get '/home', to: 'home#index'
+  root to: 'home#index'
+
   # ランキング
   get '/rankings', to: 'rankings#index'
 
@@ -14,7 +19,6 @@ Rails.application.routes.draw do
   resources :users
 
   # カクテル
-  root to: 'cocktails#index'
   resources :cocktails
 
   # アカウント有効メーラー

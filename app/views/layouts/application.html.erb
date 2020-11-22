@@ -15,6 +15,7 @@
       <div class="navber-brand">CocktailSearchApp</div>
 
       <ul class="navbar-nav ml-auto">
+      <li><%= link_to("ホーム", home_path, class: "nav-link") %></li>
         <li><%= link_to("検索ページ", cocktails_path, class: "nav-link") %></li>
         <li><%= link_to("ランキング", rankings_path, class: "nav-link") %></li>
         <% if current_user %>
