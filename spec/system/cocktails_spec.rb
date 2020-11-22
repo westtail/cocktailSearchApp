@@ -52,15 +52,17 @@ RSpec.describe "機能統合テスト", type: :system do
   end
 
   describe "ログインなしテスト" do
-    before do
-      visit root_path
-    end
     describe "遷移機能" do
       it "ホーム画面に移動したか" do
-        # have_selecter でタグを指名
+        visit root_path
+        expect(page).to have_selector 'h1', text: 'ホーム'
+      end
+      it "検索画面に移動したか" do
+        visit cocktails_path
         expect(page).to have_selector 'h1', text: 'カクテル検索'
       end
-      it "ホーム画面にテストカクテルがあるか" do
+      it "検索画面にテストカクテルがあるか" do
+        visit cocktails_path
         expect(page).to have_content 'テストカクテル1'
       end
       it "カクテル詳細を確認できるか" do
@@ -75,11 +77,18 @@ RSpec.describe "機能統合テスト", type: :system do
       end
     end
     describe "ヘッダー機能" do
+      before do
+        visit root_path
+      end
       it "検索ページに移動できるか" do
         visit cocktail_path(@cocktails_a.id)
         expect(page).to have_selector 'h1', text: 'カクテル詳細'
         click_on "検索ページ"
         expect(page).to have_selector 'h1', text: 'カクテル検索'
+      end
+      it "ホームに移動できるか" do
+        click_on "ホーム"
+        expect(page).to have_selector 'h1', text: 'ホーム'
       end
       it "ユーザー登録に移動できるか" do
         click_on "ユーザー登録"
@@ -97,7 +106,7 @@ RSpec.describe "機能統合テスト", type: :system do
   end
   describe "検索機能" do
     before do
-      visit root_path
+      visit cocktails_path
     end
     it "カクテル名で検索でカクテルが出てくるか" do
       fill_in 'カクテル名', with: 'テストカクテル'
