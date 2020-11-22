@@ -10,11 +10,7 @@ body{
 // タイトル
 h1{
     color: #ffffff;
-}
-@media screen and (max-width: 380px){
-    h1 {
-        text-align: center;
-    }
+    text-align: center;
 }
 // ボタン
 a.btn{

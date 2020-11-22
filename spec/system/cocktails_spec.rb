@@ -85,6 +85,10 @@ RSpec.describe "機能統合テスト", type: :system do
         click_on "ユーザー登録"
         expect(page).to have_selector 'h1', text: 'ユーザー登録'
       end
+      it "ランキングに移動できるか" do
+        click_on "ランキング"
+        expect(page).to have_selector 'h1', text: 'ランキング'
+      end
       it "ログインに移動できるか" do
         click_on "ログイン"
         expect(page).to have_selector 'h1', text: 'ログイン'
@@ -148,5 +152,16 @@ RSpec.describe "機能統合テスト", type: :system do
     #    visit edit_account_activation_path(@user.activation_token,email: @user.email)
     #  end
     #end
+  end
+
+  describe "ランキング機能" do
+    describe "ページ表示" do
+      before do
+        visit rankings_path
+      end
+      it "ページが表示されるか" do
+        expect(page).to have_selector 'h1', text: 'ランキング'
+      end
+    end
   end
 end

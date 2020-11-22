@@ -1,0 +1,85 @@
+<h1>ランキング</h1>
+<div class="form">
+    <%= search_form_for @q, url: rankings_path do |f| %>
+        <div class="form-group-2">
+            <div class="form-base-alcohol">
+                <%= f.label :base_alcohol_cont, "ベースのお酒" ,class: "col-form-label"%>
+                <%= f.select :base_alcohol_cont, [['ウィスキー', 'ウイスキー'], ['ジン', 'ジン'], ['ラム', 'ラム'], ['テキーラ', 'テキーラ'], ['ウォッカ ', 'ウォッカ'], ['その他', 'その他']], { include_blank: ''}, { class: 'form-control'} %>
+            </div>
+            <div class="form-taste">
+                <%= f.label :taste_cont, "味" ,class: "col-form-label"%>
+                <%= f.select :taste_cont, [['辛い','辛い'],['普通','普通'],['甘い','甘い']], { include_blank: ''}, { class: 'form-control'} %>
+            </div>
+        </div>
+        <%= f.submit "検索", class: "btn btn-light form-submit" %>
+        <input value="検索条件のクリア" id="clear-form" class="btn btn-light form-submit">
+    <% end %>
+</div>
+
+<div class="cocktail-list">
+<% @search_rank_list.each.with_index(1) do |cocktail, i| %>
+    <div>
+    <p class="rank-number"><%=i%>位</p>
+    <p class="rank-number">お気に入り数 <%= @search_rank_number[i-1]%></p>
+    <%= link_to cocktail_path(cocktail.id), class:"cocktail-colom" do %>
+        <div class="cocktail-data">
+            <div class="cocktail-name">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:name) %>
+                </dt>
+                <dd>
+                    <%= cocktail.name %>
+                </dd>
+            </div>
+            <div class="cocktail-base-alcohol">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:base_alcohol) %>
+                </dt>
+                <dd>
+                    <%= cocktail.base_alcohol %>
+                </dd>
+            </div>
+            <div class="cocktail-taste">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:taste) %>
+                </dt>
+                <dd>
+                    <%= cocktail.taste %>
+                </dd>
+            </div>
+            <div class="cocktail-glass-type">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:glass_type) %>
+                </dt>
+                <dd>
+                    <%= cocktail.glass_type %>
+                </dd>
+            </div>
+            <div class="cocktail-alcohol-percentage">
+                <dt>
+                    <%= Cocktail.human_attribute_name(:alcohol_percentage) %>
+                </dt>
+                <dd>
+                    <%= cocktail.alcohol_percentage %>
+                </dd>
+            </div>
+            <% if current_user %>
+                <% if cocktail.cocktailmark_by?(current_user) %> 
+                    <%= icon('fas', 'star fa-2x') %>
+                <% else %>
+                    <%= icon('far', 'star fa-2x') %>
+                <% end %>
+            <% else %>
+            <% end %>
+        </div>
+        <div class="cocktail-image">
+            <% if cocktail.image? %>
+                <%= image_tag cocktail.image.url , class: 'sized'%>
+            <% else %>
+                <%= image_tag "noimage.png" , class: 'sized'%>
+            <% end %>
+        </div>
+    <% end %>
+    </div>
+<% end %>
+</div>
