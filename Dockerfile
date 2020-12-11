@@ -7,7 +7,8 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get update -qq && \
     apt-get install -y build-essential \
                        libpq-dev \
-                       nodejs
+                       nodejs \
+                       vim
 RUN apt-get install -y  fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatspi2.0-0 libgtk-3-0 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 xdg-utils \
     unzip zip
 
