@@ -180,6 +180,17 @@ img.sized {
     }
     .form-image{
         margin: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    #cocktail_image{
+        margin: 5px auto;
+    }
+    #preview{
+        width: 250px;
+        height: 405px;
+        margin: 5px auto;
+        border: 1px solid;
     }
     .form-cocktail-recipe{
         textarea{
@@ -196,7 +207,6 @@ img.sized {
             width:  100%;
         }
     }
-    
 }
 
 // ページネーション

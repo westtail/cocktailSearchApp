@@ -4,15 +4,19 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :fog
 
   #上限変更
-  #process :resize_to_limit => [250, 405]
+  process :resize_to_limit => [250, 405]
 
   #JPGで保存
-  #process :convert => 'jpg'
+  process :convert => 'jpg'
 
   #サムネイルを生成
   #version :thumb do
   #  process :resize_to_limit => [250, 405]
   #end
+
+  def default_url
+    'noimage.png'
+  end
 
   # jpg,jpeg,gif,pngのみ
   def extension_white_list
@@ -20,18 +24,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   #ファイル名を変更し拡張子を同じにする
-  #def filename
-  #  super.chomp(File.extname(super)) + '.jpg'
-  #end
+  def filename
+    super.chomp(File.extname(super)) + '.jpg'
+  end
 
 #日付で保存
-  #def filename
-  #  if original_filename.present?
-  #    time = Time.now
-  #    name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
-  #    name.downcase
-  #  end
-  #end
+  def filename
+    if original_filename.present?
+      time = Time.now
+      name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
+      name.downcase
+    end
+  end
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"

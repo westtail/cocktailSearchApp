@@ -64,7 +64,8 @@
       </div>
       <div class="form-image">
         <%= f.label :image,class: "col-form-label" %>
-        <%= f.file_field :image%>
+        <%= f.file_field :image , onchange: 'previewImage(preview)' %>
+        <%= image_tag @cocktail.image.url, id: 'preview' %>
       </div>
       <div class="form-submit">
           <%= f.submit%>
