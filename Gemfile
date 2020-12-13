@@ -73,6 +73,7 @@ gem 'autoprefixer-rails'
 # 画像投稿機能
 gem 'carrierwave', '>= 1.3.1'
 gem 'rmagick'
+gem 'fog-aws'
 
 # 検索機能gem
 gem 'ransack'

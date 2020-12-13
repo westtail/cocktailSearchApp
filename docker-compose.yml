@@ -26,6 +26,8 @@ services:
       - public-data:/cocktailSearchApp/public
       - tmp-data:/cocktailSearchApp/tmp
       - log-data:/cocktailSearchApp/log
+    environment:
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     ports:
       - "3000:3000"
     links:

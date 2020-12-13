@@ -87,7 +87,7 @@
         </div>
         <div class="cocktail-image">
             <% if cocktail.image? %>
-                <%= image_tag cocktail.image.url , class: 'sized'%>
+                <%= image_tag cocktail.image.to_s , class: 'sized'%>
             <% else %>
                 <%= image_tag "noimage.png" , class: 'sized'%>
             <% end %>

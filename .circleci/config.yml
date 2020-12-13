@@ -14,6 +14,7 @@ jobs:
       - run:
           name: docker-compose up
           command: docker-compose up --build -d
+          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}"
       - run:
           name: docker-compose stop
           command: docker-compose stop
