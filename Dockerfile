@@ -1,6 +1,9 @@
 # dockerfile
 # 開発rubyバージョン指定
 FROM ruby:2.5.1
+# circleciで環境変数を扱う
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
 # 必要なパッケージのインストール
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
