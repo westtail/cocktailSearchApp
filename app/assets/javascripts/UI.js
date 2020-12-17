@@ -13,8 +13,8 @@ $(document).on('turbolinks:load',function () {
 
 // 検索のクリア機能
 $(document).on('turbolinks:load',function () {
-    $('#clear-form').on('click', () => {
-        $('#q_name_cont').val("");
+    $('.form #clear-form').on('click', () => {
+        $('.form #q_name_cont').val("");
         $('#q_base_alcohol_cont').val("");
         $('#q_taste_cont').val("");
         $('#q_glass_type_cont').val("");

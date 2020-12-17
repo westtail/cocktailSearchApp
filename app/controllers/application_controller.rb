@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user
+    before_action :header_search
 
+    def header_search
+        @search = Cocktail.ransack(params[:q])
+        @cocktails= @search.result(distinct: true).page(params[:page]).per(18)
+    end
     private
 
     def current_user

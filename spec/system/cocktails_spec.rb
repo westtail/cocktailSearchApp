@@ -86,6 +86,10 @@ RSpec.describe "機能統合テスト", type: :system do
         click_on "ホーム"
         expect(page).to have_selector 'h1', text: 'ホーム'
       end
+      it "検索を行ってカクテル検索に移動するか" do
+        click_on "検索!"
+        expect(page).to have_selector 'h1', text: 'カクテル検索'
+      end
       it "検索ページに移動できるか" do
         visit cocktail_path(@cocktails_a.id)
         expect(page).to have_selector 'h1', text: 'カクテル詳細'
