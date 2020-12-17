@@ -2,10 +2,7 @@
 
 <div class="header">
     <div>
-        <a class="btn btn-primary" href="/cocktails">ホームへ戻る</a>
-        <% if current_user %>
-            <%= link_to "ユーザーページへ戻る", user_path(current_user.id), class: "btn btn-primary" %>
-        <% end %>
+        <%= link_to "戻る", :back, class: "btn btn-primary" %>
     </div>
     <% if current_user %>
     <div>

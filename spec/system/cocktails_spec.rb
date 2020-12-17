@@ -70,9 +70,11 @@ RSpec.describe "機能統合テスト", type: :system do
         expect(page).to have_selector 'h1', text: 'カクテル詳細'
       end
       it "詳細から一覧に戻れるか" do
+        visit cocktails_path
+        expect(page).to have_selector 'h1', text: 'カクテル検索'
         visit cocktail_path(@cocktails_a.id)
         expect(page).to have_selector 'h1', text: 'カクテル詳細'
-        click_on "ホームへ戻る"
+        click_on "戻る"
         expect(page).to have_selector 'h1', text: 'カクテル検索'
       end
     end
@@ -132,7 +134,7 @@ RSpec.describe "機能統合テスト", type: :system do
       it "詳細から一覧に戻れるか" do
         visit cocktail_path(@cocktails_a.id)
         expect(page).to have_selector 'h1', text: 'カクテル詳細'
-        click_on "ホームへ戻る"
+        click_on "戻る"
         expect(page).to have_selector 'h1', text: 'カクテル検索'
       end
     end
