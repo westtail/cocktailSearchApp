@@ -1,3 +1,19 @@
+footer{
+  .app-title{
+    flex-direction : column;
+  }
+  li{
+    margin: 10px;
+    a{
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  small{
+    text-align: center;
+    margin: auto;
+  }
+}
+
 dl.searchbox{
     width: 250px;
     position:relative;
