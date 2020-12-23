@@ -1,0 +1,25 @@
+<header>
+    <div class="app-title navbar navbar-expand-md navbar-light bg-light">
+      <div class="navber-brand">CocktailSearchApp</div>
+      <dl class="searchbox">
+        <%= search_form_for @search, url: cocktails_path do |f| %>
+          <dt><%= f.text_field :name_or_base_alcohol_or_taste_or_glass_type_or_alcohol_percentage_cont ,placeholder: 'カクテル名、ベースのお酒など' %></dt>
+          <dd><%= f.submit ("なんでも検索") , class: 'search-btn'%></dd>
+        <% end %>
+      </dl>
+
+      <ul class="navbar-nav ml-auto">
+      <li><%= link_to("ホーム", home_path, class: "nav-link") %></li>
+        <li><%= link_to("検索ページ", cocktails_path, class: "nav-link") %></li>
+        <li><%= link_to("ランキング", rankings_path, class: "nav-link") %></li>
+        <% if current_user %>
+        <li><%= link_to("カクテル登録", new_cocktail_path, class: "nav-link") %></li>
+          <li><%= link_to("ユーザーページ", user_path(current_user.id), class: "nav-link") %></li>
+          <li><%= link_to("ログアウト", logout_path, :method => :delete, class: "nav-link") %></li>
+        <% else %>
+          <li><%= link_to("ユーザー登録", new_user_path, class: "nav-link") %></li>
+          <li><%= link_to("ログイン", login_path, class: "nav-link") %></li>
+        <% end %>
+      </ul>
+    </div>
+</header>

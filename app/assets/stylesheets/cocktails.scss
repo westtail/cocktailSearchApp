@@ -10,11 +10,7 @@ body{
 // タイトル
 h1{
     color: #ffffff;
-}
-@media screen and (max-width: 380px){
-    h1 {
-        text-align: center;
-    }
+    text-align: center;
 }
 // ボタン
 a.btn{
@@ -116,7 +112,14 @@ a.btn{
     justify-content: space-around;
     background-color: #F0F0F2;
     color: #000000;
+    text-decoration: none;
 }
+
+//ホバー時に下線が出ないようにする
+a:hover{
+    text-decoration: none;
+}
+
 // データと画像の配置
 .cocktail-data, .cocktail-image{
     padding: 5px;
@@ -177,6 +180,17 @@ img.sized {
     }
     .form-image{
         margin: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    #cocktail_image{
+        margin: 5px auto;
+    }
+    #preview{
+        width: 250px;
+        height: 405px;
+        margin: 5px auto;
+        border: 1px solid;
     }
     .form-cocktail-recipe{
         textarea{
@@ -193,7 +207,6 @@ img.sized {
             width:  100%;
         }
     }
-    
 }
 
 // ページネーション

@@ -38,6 +38,17 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = true
 
+  # テストが通らないのでコメントありで通す
+  #config.action_mailer.default_url_options = { host: Rails.application.credentials.aws[:host] }
+  #ActionMailer::Base.smtp_settings = {
+  #  :address =>        Rails.application.credentials.aws[:address],
+  #  :port =>           587,
+  #  :domain =>         Rails.application.credentials.aws[:domain],
+  #  :authentication => :login,
+  #  :user_name =>      Rails.application.credentials.aws[:ses_access_key_id],
+  #  :password =>       Rails.application.credentials.aws[:ses_secret_access_key]
+  #}
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

@@ -8,24 +8,20 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZHE178HXE"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WZHE178HXE');
+    </script>
   </head>
 
   <body>
-    <div class="app-title navbar navbar-expand-md navbar-light bg-light">
-      <div class="navber-brand">CocktailSearchApp</div>
-
-      <ul class="navbar-nav ml-auto">
-        <li><%= link_to("検索ページ", cocktails_path, class: "nav-link") %></li>
-        <% if current_user %>
-          <li><%= link_to("ユーザーページ", user_path(current_user.id), class: "nav-link") %></li>
-          <li><%= link_to("ログアウト", logout_path, :method => :delete, class: "nav-link") %></li>
-        <% else %>
-          <li><%= link_to("ユーザー登録", new_user_path, class: "nav-link") %></li>
-          <li><%= link_to("ログイン", login_path, class: "nav-link") %></li>
-        <% end %>
-      </ul>
-    </div>
-  
+  <%= render 'layouts/header' %>
     <div class="container">
       <% if flash[:notice]  %>
         <div class="alert alert-success">
@@ -33,5 +29,7 @@
         </div>
       <% end %>
       <%= yield %>
+    </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>

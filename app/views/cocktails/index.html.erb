@@ -2,6 +2,10 @@
 <div class="form">
     <%= search_form_for @q do |f| %>
         <div class="form-group-1">
+            <div class="form-all">
+                <%= f.label :name_cont, "なんでも検索" ,class: "col-form-label"%>
+                <%= f.search_field :name_or_base_alcohol_or_taste_or_glass_type_or_alcohol_percentage_cont , class: "form-control"%>
+            </div>
             <div class="form-name">
                 <%= f.label :name_cont, "カクテル名" ,class: "col-form-label"%>
                 <%= f.search_field :name_cont , class: "form-control"%>
@@ -25,10 +29,10 @@
             <div class="form-alcohol-percentage">
                 <%= f.label :alcohol_percentage_cont, "度数" ,class: "col-form-label"%>
                 <%= f.select :alcohol_percentage_cont, [['ノンアルコール(0%)','ノンコール(0%)'],['弱め(1~10%)','弱め(1~10%)'],['普通(10~20%)','普通(10~20%)'],['強め(20~30%)','強め(20~30%)'],['強い(30~40%)','強い(30~40%)'],['非常に強い(40~%)','すごく強い(40~%)']], { include_blank: ''}, { class: 'form-control'} %>
-            </div> 
+            </div>
         </div>
         <%= f.submit "検索", class: "btn btn-light form-submit" %>
-        <%= link_to '検索条件のクリア', request.path ,class: "btn btn-light form-submit"%>
+        <input value="検索条件のクリア" id="clear-form" class="btn btn-light form-submit">
     <% end %>
 </div>
 
@@ -87,7 +91,7 @@
         </div>
         <div class="cocktail-image">
             <% if cocktail.image? %>
-                <%= image_tag cocktail.image.url , class: 'sized'%>
+                <%= image_tag cocktail.image.to_s , class: 'sized'%>
             <% else %>
                 <%= image_tag "noimage.png" , class: 'sized'%>
             <% end %>

@@ -22,6 +22,14 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+  # 開発環境
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "smtp", :port => 1025 } 
+  #メール機能について
+  config.action_mailer.default_url_options = { host: 'localhost'}
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = true
+
   # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = false
 
