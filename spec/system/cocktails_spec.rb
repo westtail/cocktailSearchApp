@@ -87,7 +87,7 @@ RSpec.describe "機能統合テスト", type: :system do
         expect(page).to have_selector 'h1', text: 'ホーム'
       end
       it "検索を行ってカクテル検索に移動するか" do
-        click_on "検索!"
+        click_on "なんでも検索"
         expect(page).to have_selector 'h1', text: 'カクテル検索'
       end
       it "検索ページに移動できるか" do
@@ -178,6 +178,12 @@ RSpec.describe "機能統合テスト", type: :system do
   describe "検索機能" do
     before do
       visit cocktails_path
+    end
+    it "なんでも検索でカクテルが出てくるか" do
+      fill_in 'なんでも検索', with: 'テストカクテル'
+      click_button '検索'
+      expect(page).to have_selector 'h1', text: 'カクテル検索'
+      expect(page).to have_selector 'dd', text: 'テストカクテル1'
     end
     it "カクテル名で検索でカクテルが出てくるか" do
       fill_in 'カクテル名', with: 'テストカクテル'

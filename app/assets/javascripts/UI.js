@@ -14,7 +14,8 @@ $(document).on('turbolinks:load',function () {
 // 検索のクリア機能
 $(document).on('turbolinks:load',function () {
     $('.form #clear-form').on('click', () => {
-        $('.form #q_name_cont').val("");
+        $('.form #q_name_or_base_alcohol_or_taste_or_glass_type_or_alcohol_percentage_cont').val("");
+        $('#q_name_cont').val("");
         $('#q_base_alcohol_cont').val("");
         $('#q_taste_cont').val("");
         $('#q_glass_type_cont').val("");
