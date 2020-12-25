@@ -5,13 +5,21 @@ FROM ruby:2.5.1
 ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
+# 本番環境時に実行-1
+#ENV RAILS_ENV="production"
+#ENV NODE_ENV="production"
+#ENV RAILS_SERVE_STATIC_FILES="true"
+
 # 必要なパッケージのインストール
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && \
     apt-get install -y build-essential \
                        libpq-dev \
                        nodejs \
-                       vim
+                       vim \
+                       yarn
 RUN apt-get install -y  fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatspi2.0-0 libgtk-3-0 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 xdg-utils \
     unzip zip
 
@@ -49,3 +57,6 @@ RUN mkdir -p tmp/sockets
 
 RUN mkdir -p /tmp/public && \
     cp -rf /cocktailSearchApp/public/* /tmp/public
+
+# 本番環境時に実行-1
+#RUN SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile \

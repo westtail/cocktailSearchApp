@@ -15,6 +15,6 @@ test:
 production:
   <<: *default
   database: cocktailSearchApp_production
-  #username: cocktailSearchApp
-  #password: <%= ENV['COCKTAILSEARCHAPP_DATABASE_PASSWORD'] %>
+  username: admin
+  password: admin-pass
 
