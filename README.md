@@ -48,5 +48,5 @@ https://www.cocktailsearch.cf
 * circleCI
 
 ## インフラ周り
-![環境図](https://user-images.githubusercontent.com/40736515/94824216-bb7e4f00-043f-11eb-8e81-c20b4391097b.png)
+![環境図](https://user-images.githubusercontent.com/40736515/106175041-fc615700-61d8-11eb-8601-97a15a594aa3.png)
 ### https://github.com/westtail/cocktailApp から新しく作り直しています
