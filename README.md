@@ -18,18 +18,15 @@ https://www.cocktailsearch.cf
 * ランキング機能
 
 ### (更新内容)
-- [x] ver2アップデート
-- [ ] ver3アップデート
+- [x] ver3アップデート
 
-### ver1~ver2
+### ver1~ver3
 * スマホサイズに改善
 * 検索機能の実装
 * カクテルの登録機能
 * javascriptを利用したUIの向上
 * ユーザー機能
 * お気に入り機能
-
-### ver3
 * ランキング機能
 * ホーム画面追加
 * 画像をS3で保存
@@ -37,7 +34,7 @@ https://www.cocktailsearch.cf
 * circleCIでの自動テスト
 
 ## 使用技術
-
+* HTML/CSS/Javascript
 * ruby on rails 5.2.4
 * ruby 2.5.1
 * postgresSQL 11.5
@@ -46,7 +43,9 @@ https://www.cocktailsearch.cf
   * VPC
   * EC2
   * SES
+  * S3
 * Docker/Docker-compose
+* circleCI
 
 ## インフラ周り
 ![環境図](https://user-images.githubusercontent.com/40736515/94824216-bb7e4f00-043f-11eb-8e81-c20b4391097b.png)
